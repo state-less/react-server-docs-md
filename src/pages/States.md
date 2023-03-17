@@ -8,7 +8,7 @@ States live on the server and are created using the `createState` method of the 
 
 ### Stores
 States are stored in `Stores`, which are responsible for persisting and retrieving states.
-Externalizing the states into a database, allows your backend to run state-less, by fetching the state from a database rather than memory.
+Externalizing the states into a database, allows your backend or BFF to run state-less by fetching the state from a database rather than memory.
 
 This allows your whole backend to run on a serverless infrastructure, as no data needs to be kept in memory and everything can be handled on a per request basis.
 
@@ -26,8 +26,31 @@ In react-server v2, transportation of states is handled by GraphQl / Apollo. Thi
 #### Reactivity
 React Server uses `PubSub` to notify clients about changes to states. This allows clients to react to changes in states, without having to poll the server for changes.
 
-### `Store`
+### States vs. Data
+It's _worth noting_ that `useServerState` should *not* be seen as a replacement for a database. Even though you could do so to some extent, you shouldn't. You wouldn't use `useState` to build a database in your client either. You should see `useServerState` as an extension of `useState` to the server side. It provides you with a state that lives on the server instead of the client. 
+
+It's up to your imagination what use it for. Using a state provides you with a live and reactive property that's synchronized across all clients. However imagine you would collect big amounts of form data. Those shouldn't be stored in a state, but rather in a database. Why? Because it's difficult to query them. They are stored in a way that makes it easy to access and display it in a client, but in order to process and analyse the data later you would have to write complex queries. In a usual React Server application, data in states are usually tied to components which means the structure in the database is similar to the structure of your application which makes it easy to query data for display, but hard to query data for further manipulation or processing.
+
+Thus it's recommended to use a traditional database to store data you will later need to access outside the scope of your application. If the data never leaves your react server application you can as well keep it in a state if it suits.
+
+You can also query data from a database on the serverside and keep a copy of the data in a state in order to make it reactive, but you would need to implement the serverside logic to check the database for changes. e.g. using DynamoDb streams or Postgres triggers. You can also poll the database on the server and update the state with new data when it changed, but there are better techniques to make your data reactive.
+### Store
 To create a new state, you need to instantiate a store first. The store is responsible for persisting and retrieving states.
+The store can transport states to any kind of database to persist them. e.g. Redis, Postgres, DynamoDb and so on.
+
+By using a unified interface to access and manipulate states you can swap out the database that handles states at a later point without having to change your implementation.
+
+This provides some benefits, but also some drawbacks.
+
+* It is a very simplified interface to a database and it can't replace one. 
+* Writing efficient queries that query data across components can be difficult and slow as it either involves application code or a relational database and custom SQL. 
+* It's essentially only a key value store, as such it comes with limitations.
+
+The good thing is, you can (and should) write custom data fetching logic any time you want. If you're creating 
+
+It's thus recommended that you only use states where you need a reactive stateful variable on the server that is synced to clients in realtime. It's not a database and should be not treated as such. 
+
+That means you should -
 ```
 const store = new Store();
 const state = store.createState(defaultValue, options);

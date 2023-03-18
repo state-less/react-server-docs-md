@@ -80,9 +80,22 @@ States are consumed by the client using the `useServerState` hook, which takes a
 const [value, setValue, {loading, error}] = useServerState(defaultValue, options);
 ```  
 
+*useServerState*
+| Argument    | Description |
+|--|--|
+|`defaultValue: any`    | The value of the state on the server, or the default value if the state is not yet available.  
+|`options: UseServerStateOptions` | A function that updates the state on the server.  
+
+*ServerState*
 | Argument    | Description |
 |--|--|
 |`value`    | The value of the state on the server, or the default value if the state is not yet available.  
 |`setValue` | A function that updates the state on the server.  
 |`loading`  | A boolean that indicates if the state is currently loading.  
 |`error`    | An error object that indicates if an error occurred while loading the state.
+
+*UseServerStateOptions*
+| Property    | Description |
+|--|--|
+|`key?`    | The key of the state on the server. If omitted a key is generated on the server.  
+|`scope?`  | The scope of the state on the server. If omitted, 'global' is used.

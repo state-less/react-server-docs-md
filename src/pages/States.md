@@ -71,7 +71,11 @@ CreateStateOptions
 ## States on the client
 States are consumed by the client using the `useServerState` hook, which takes a default value and an options object as arguments. The hook is very similar to the `useState` hook from React and only differs in the options object.
 
-### `useServerState`
+### Optimistic
+
+`setValue` calls are implemented optimistic and the client library returns the new value before the request finishes. Ongoing requests are cancelled if `setValue` is called repeatedly and after the last request succeeded, the optimistic value is replaced by the server side value.
+
+## `useServerState`
 ```
 const [value, setValue, {loading, error}] = useServerState(defaultValue, options);
 ```  

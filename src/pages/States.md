@@ -6,22 +6,11 @@ They are the building blocks of your backend components, and they can be used to
 ## States on the server
 States live on the server and are created using the `createState` method of the `Store` class.
 
-### Stores
-States are stored in `Stores`, which are responsible for persisting and retrieving states.
-Externalizing the states into a database, allows your backend or BFF to run state-less by fetching the state from a database rather than memory.
-
-This allows your whole backend to run on a serverless infrastructure, as no data needs to be kept in memory and everything can be handled on a per request basis.
-
-The most basic scenario is a single `State` instantiated on the server. 
-This state can can be exposed to and consumed by a client.
-
-By consuming a *state*, the clients gain access to a `setValue` function which allows them to update the state with an arbitrary value.
-
 ### Authentication and Authorization
 States do *not* handle authentication or authorization. To constraint access to a state you need to use a `Component` that handles who and how someone can operate on a state.
 
 ### Transport
-In react-server v2, transportation of states is handled by GraphQl / Apollo. This makes it easier to build a robust framework by building on a proven solution, rather than implementing own data transportation mechanisms.
+In react-server v2, transportation of states is handled by GraphQl / Apollo. This makes it easier to build a robust framework by building on a proven solution, rather than implementing our own data transportation.
 
 #### Reactivity
 React Server uses `PubSub` to notify clients about changes to states. This allows clients to react to changes in states, without having to poll the server for changes.
@@ -34,7 +23,13 @@ It's up to your imagination what use it for. Using a state provides you with a l
 Thus it's recommended to use a traditional database to store data you will later need to access outside the scope of your application. If the data never leaves your react server application you can as well keep it in a state if it suits.
 
 You can also query data from a database on the serverside and keep a copy of the data in a state in order to make it reactive, but you would need to implement the serverside logic to check the database for changes. e.g. using DynamoDb streams or Postgres triggers. You can also poll the database on the server and update the state with new data when it changed, but there are better techniques to make your data reactive.
-### Store
+## Stores
+
+States are stored in `Stores`, which are responsible for persisting and retrieving states.
+Externalizing the states into a database, allows your backend or BFF to run state-less by fetching the state from a database rather than memory.
+
+This allows your whole backend to run on a serverless infrastructure, as no data needs to be kept in memory and everything can be handled on a per request basis.
+
 To create a new state, you need to instantiate a store first. The store is responsible for persisting and retrieving states.
 The store can transport states to any kind of database to persist them. e.g. Redis, Postgres, DynamoDb and so on.
 
@@ -50,14 +45,13 @@ The good thing is, you can (and should) write custom data fetching logic any tim
 
 It's thus recommended that you only use states where you need a reactive stateful variable on the server that is synced to clients in realtime. It's not a database and should be not treated as such. 
 
-That means you should -
 ```
 const store = new Store();
 const state = store.createState(defaultValue, options);
 
 state.value = 'Hello World';
 ```
-Store
+### *Store*
 | Argument | Description |
 |--|--|
 |createState(defaultValue: any, options: CreateStateOptions)|Creates a new state in the store under the specified key and scope|
@@ -75,7 +69,7 @@ States are consumed by the client using the `useServerState` hook, which takes a
 
 `setValue` calls are implemented optimistic and the client library returns the new value before the request finishes. Ongoing requests are cancelled if `setValue` is called repeatedly and after the last request succeeded, the optimistic value is replaced by the server side value.
 
-## `useServerState`
+### useServerState
 ```
 const [value, setValue, {loading, error}] = useServerState(defaultValue, options);
 ```  

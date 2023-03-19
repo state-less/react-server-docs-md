@@ -13,7 +13,7 @@ We'll keep things simple and basic. Let's start by scaffolding a serverside comp
 
 *backend/src/components/Navigation*
 ```tsx
-import { useState } from '@state-less/react-server';
+import { Scopes, useState } from '@state-less/react-server';
 import { ServerSideProps } from './ServerSideProps';
 import { v4 } from 'uuid';
 
@@ -35,6 +35,7 @@ const isValidPath = (path: string) => {
 export const Navigation = () => {
     const [entries, setEntries] = useState<NavigationEntry[]>([], {
         key: 'entries',
+        scope: Scopes.Client,
     });
 
     const addEntry = (entry) => {
@@ -67,6 +68,7 @@ export const Navigation = () => {
         />
     );
 };
+
 ```
 
 We'll add an option to edit an entry later on. Let's just get the basic functionality of adding and removing entries to a list done.

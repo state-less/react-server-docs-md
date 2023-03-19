@@ -26,6 +26,11 @@ export const isEntry = (entry: any): entry is NavigationEntry => {
     return entry.id && entry.path && entry.title;
 };
 
+/** This should check if the path contains a / and also that it doesn't contain any special characters */
+const isValidPath = (path: string) => {
+    return /^\/([0-9A-Za-z_\-][\/]?)*$/.test(path);
+};
+
 export const Navigation = () => {
     const [entries, setEntries] = useState<NavigationEntry[]>([], {
         key: 'entries',
@@ -34,9 +39,15 @@ export const Navigation = () => {
     const addEntry = (entry) => {
         const id = v4();
         const newEntry = { ...entry, id };
+
         if (!isEntry(newEntry)) {
             throw new Error('Invalid entry');
         }
+
+        if (!isValidPath(newEntry.path)) {
+            throw new Error('Invalid path');
+        }
+
         if (entries.find((e) => e.path === entry.path)) {
             throw new Error('Entry already exists');
         }
@@ -55,7 +66,6 @@ export const Navigation = () => {
         />
     );
 };
-
 ```
 
 We'll add an option to edit an entry later on. Let's just get the basic functionality of adding and removing entries to a list done.
@@ -64,7 +74,7 @@ Head over to your client side code and create a `ServerNavigation.tsx` file unde
 
 The frontend code looks a bit more verbose, but don't get intimidated by it. It's actually very simple.
 
-*src/server-components/*
+*frontend/src/server-components/ServerNavigation*
 ```tsx
 import {
   IconButton,
@@ -74,6 +84,8 @@ import {
   ListItemText,
   TextField,
   Alert,
+  Button,
+  LinearProgress
 } from '@mui/material';
 import { useComponent } from '@state-less/react-client/dist/index';
 import { useState } from 'react';
@@ -83,7 +95,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 /** This should check if the path contains a / and also that it doesn't contain any special characters */
 const isValidPath = (path: string) => {
-  return /^[0-9A-Za-z_-]+$/.test(path);
+  return /^\/([0-9A-Za-z_\-][\/]?)*$/.test(path);
 };
 
 const errors = (messages) => {
@@ -93,22 +105,20 @@ const errors = (messages) => {
     .join(', ');
 };
 export const ServerNavigation = () => {
-  const [component, { error, loading }] = useComponent('navigation', {
-    client: localClient,
-  });
+  const [component, { error, loading }] = useComponent('navigation', {});
   const [title, setTitle] = useState('');
   const [path, setPath] = useState('');
 
   const errs = [
     ['Invalid path', !isValidPath(path)],
+    ['Path must start with /', path[0] !== '/'],
     ['Title and path are required', !title || !path],
   ];
-
-  const titleMessage = errors(errs.slice(1));
+  const titleMessage = errors(errs.slice(2));
   const pathMessage = errors(errs);
-  
   return (
     <div>
+      {loading && <LinearProgress />}
       {error && <Alert severity="error">{error.message}</Alert>}
       <TextField
         label="Title"

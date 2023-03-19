@@ -11,6 +11,7 @@ We dont' need much logic to implement a serverside navigation. We basically need
 
 We'll keep things simple and basic. Let's start by scaffolding a serverside component.
 
+*backend/src/components/Navigation*
 ```tsx
 import { useState } from '@state-less/react-server';
 import { ServerSideProps } from './ServerSideProps';

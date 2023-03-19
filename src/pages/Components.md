@@ -80,6 +80,10 @@ const HelloWorld = () => {
 }
 ```
 
+Contrary to the previous example where the client could store an arbitrary value using the `useServerState` hook, the possible operations on the `count` state are well defined in this example. 
+
+As the `setValue` function is not exposed to the client, the only possible interaction with the count state from the client is using the `increase` function which increases the count by one.
+
 *index.tsx*
 ```
 import { render } from '@state-less/react-server';
@@ -105,3 +109,27 @@ const HelloWorld = () => {
   </div>
 };
 ```
+
+## useComponent
+```
+const [props, {loading, error}] = useComponent(key, options);
+```  
+
+*useComponent*
+| Argument    | Description |
+|--|--|
+|`key: any`    | The serverside key of the component.  
+|`options: UseComponentOptions` | Additional options.  
+
+*Component*
+| Argument    | Description |
+|--|--|
+|`props`    | The serverside props passed to the `ServerSideProps` component.  
+|`loading`  | A boolean that indicates if the component is currently loading.  
+|`error`    | An error object that indicates if an error occurred while loading the component.
+
+*UseComponentOptions*
+| Property    | Description |
+|--|--|
+|`key?`    | The key of the state on the server. If omitted a key is generated on the server.  
+|`scope?`  | The scope of the state on the server. If omitted, 'global' is used.

@@ -2,7 +2,10 @@
 
 If you change a state on the server using the `setValue` function, the component will be rerendered in the context of the client.
 
+The component will automatically notify the subscribed client about the change where it updates the component.
+
 This makes components rendered by the frontend reactive and you don't need to bother refetching or polling the state yourself.
+
 
 *backend/src/components/Examples.tsx*
 ```tsx

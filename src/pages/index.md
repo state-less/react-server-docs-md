@@ -5,8 +5,8 @@ TLDR;
 - Built with GraphQL and TypeScript for robustness and type safety
 - Component-driven development for modularity and reusability
 - Seamless isomorphic experience with React components as a unified interface
-- Automatic server-side rendering for fast and efficient page loads
-- Vertical scaling support for scalability and performance.
+- ~~Automatic server-side rendering for fast and efficient page loads~~ (NYI)
+- ~~Vertical scaling support for scalability and performance.~~ (NYI)
 
 React Server allows for a seamless isomorphic experience, as it proposes React components as a unified interface to bridge the gap between server and client. This means that you can easily build and render components on the server-side and then send them to the client-side for further rendering and interactivity. This creates a smooth and uninterrupted user experience, where the server and client are working together in perfect harmony.
 
@@ -14,10 +14,11 @@ Another great benefit of React Server is its robustness, as it's built with Grap
 
 Component-driven development is another key feature of React Server. By breaking down your Backend / UI into smaller, reusable components, you can develop faster and more efficiently, without sacrificing quality. Components can be easily shared and reused across different parts of your app, making it easy to maintain a consistent design language and reduce duplication.
 
-React Server also provides built-in support for server-side rendering, which greatly improves your app's performance and search engine optimization. By rendering your app on the server-side, you can reduce the amount of client-side rendering needed, resulting in faster load times and improved SEO rankings.
+React Server also provides built-in support for server-side rendering, which greatly improves your app's performance and search engine optimization. By rendering your app on the server-side, you can reduce the amount of client-side rendering needed, resulting in faster load times and improved SEO rankings. (NYI*)
 
 Finally, React Server offers a great developer experience, with hot reloading, code splitting, and other modern development tools. This makes it easy to iterate and test your app quickly, without having to worry about configuration and setup. With React Server, you can focus on building great user experiences, without getting bogged down in technical details.
 
+<sub>*\*NYI - Not yet implemented*
 ## Installation
 
 ### Get a Server running

@@ -9,6 +9,34 @@ States live on the server and are created using the `createState` method of the 
 ### Authentication and Authorization
 States do *not* handle authentication or authorization. To constraint access to a state you need to use a `Component` that handles who and how someone can operate on a state.
 
+### Validation
+
+States do not provide validation on their own.
+
+To validate user input or function call you need to use *Components*.
+
+```
+const MyComponent = () => {
+    const [count, _setCount] = useState(0);
+
+    const setCount = (n) => {
+        if (typeof n !== 'number') {
+            throw new Error('Invalid input');
+        }
+        setCount(n);
+    }
+
+    return <ServerSideProps
+        count={count}
+        setCount={setCount}
+     >
+}
+```
+This provides a flexible and intuitive way to constraint operation on your states. 
+
+On the client side, you would use the `useComponent` hook to obtain the serverside props and call the passed `setCount` method. 
+
+If the input is not valid, the function on the serverside will throw an error which can be handled on the client.
 ### Transport
 In react-server v2, transportation of states is handled by GraphQl / Apollo. This makes it easier to build a robust framework by building on a proven solution, rather than implementing our own data transportation.
 

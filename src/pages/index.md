@@ -1,16 +1,22 @@
 ## Why React Server?
 
-- Simplified Data Management: React Server uses GraphQL as transportation, making it easy to query and manage data on both the server and client sides of your application. With GraphQL, you can specify exactly what data you need, reducing the amount of data transfer and improving performance.
+TLDR;
 
-- Easy Deployment: React Server can be easily deployed to AWS Lambda, making it a great choice for serverless applications. AWS Lambda provides automatic scaling and high availability, making it a reliable and cost-effective option for hosting your backend.
+- Built with GraphQL and TypeScript for robustness and type safety
+- Component-driven development for modularity and reusability
+- Seamless isomorphic experience with React components as a unified interface
+- Automatic server-side rendering for fast and efficient page loads
+- Vertical scaling support for scalability and performance.
 
-- Improved Type Safety: Since React Server is written entirely in TypeScript, you can take advantage of TypeScript's powerful type checking and static analysis features to catch errors before they make it to production. This improves code quality and makes it easier to maintain and refactor your codebase.
+React Server allows for a seamless isomorphic experience, as it proposes React components as a unified interface to bridge the gap between server and client. This means that you can easily build and render components on the server-side and then send them to the client-side for further rendering and interactivity. This creates a smooth and uninterrupted user experience, where the server and client are working together in perfect harmony.
 
-- Reusable Components: With React Server, you can use TSX on the server side to create reusable components that can be used across your entire application. This improves consistency and reduces development time by eliminating the need to write custom code for each feature.
+Another great benefit of React Server is its robustness, as it's built with GraphQL and TypeScript. These technologies ensure that your code is reliable, maintainable, and scalable. With GraphQL, you can easily manage your data queries and mutations, and with TypeScript, you have the added benefit of static typing, which catches errors early and improves code readability.
 
-- Improved Performance: By using React Server with GraphQL as transportation, you can reduce the amount of data transfer and improve the performance of your application. Plus, since React Server can be run in a mix of stateless and stateful servers, you can cache render requests and scale API calls indefinitely.
+Component-driven development is another key feature of React Server. By breaking down your Backend / UI into smaller, reusable components, you can develop faster and more efficiently, without sacrificing quality. Components can be easily shared and reused across different parts of your app, making it easy to maintain a consistent design language and reduce duplication.
 
-- Overall, React Server is a powerful tool for building modular and scalable backends with GraphQL, AWS Lambda, and TypeScript. With its streamlined data management, easy deployment, improved type safety, reusable components, and improved performance, React Server is a great choice for any project.
+React Server also provides built-in support for server-side rendering, which greatly improves your app's performance and search engine optimization. By rendering your app on the server-side, you can reduce the amount of client-side rendering needed, resulting in faster load times and improved SEO rankings.
+
+Finally, React Server offers a great developer experience, with hot reloading, code splitting, and other modern development tools. This makes it easy to iterate and test your app quickly, without having to worry about configuration and setup. With React Server, you can focus on building great user experiences, without getting bogged down in technical details.
 
 ## Installation
 

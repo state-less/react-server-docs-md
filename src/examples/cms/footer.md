@@ -4,4 +4,4 @@ As you can see, it's very easy and straightforward to build backend logic that v
 
 You can see that updates to the states are synchronized in realtime and you don't need to worry about the lifecycle of your serverside component.
 
-Let's 
+Let's head over to the next step and implement a way to render that navigation and display something.

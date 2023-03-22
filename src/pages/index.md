@@ -23,17 +23,18 @@ Finally, React Server offers a great developer experience, with hot reloading, c
 
 ### Get a Server running
 
-```
+```bash
 npx init state-less/react-server my-server
 cd .my-server
 npm start
 ```
+<sub>*This is currently only working on windows*</sub>
 
 #### Troubleshooting.
 
 In case the initializiation did not work you can manually set up a server. It's a little more work but it's worth it.
 
-```
+```bash
 git clone state-less/clean-starter -b react-server my-server
 cd my-server
 git remote remove origin
@@ -43,7 +44,7 @@ yarn start
 
 ### Get a Client running
 
-```
+```bash
 yarn create vite
 yarn add @apollo/client state-less/react-client
 ```
@@ -52,14 +53,14 @@ yarn add @apollo/client state-less/react-client
 
 Import the `useServerState` hook and find and replace the `useState` call.
 
-```
+```tsx
 import { useServerState } from '@state-less/react-client'
 
 // ...
 
 const [count, setCount] = useServerState(0, {
-key: 'count',
-scope: 'global',
+    key: 'count',
+    scope: 'global',
 })
 ```
 

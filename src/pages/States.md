@@ -15,7 +15,7 @@ States do not provide validation on their own.
 
 To validate user input or function call you need to use *Components*.
 
-```
+```tsx
 const MyComponent = () => {
     const [count, _setCount] = useState(0);
 
@@ -73,7 +73,7 @@ The good thing is, you can (and should) write custom data fetching logic any tim
 
 It's thus recommended that you only use states where you need a reactive stateful variable on the server that is synced to clients in realtime. It's not a database and should be not treated as such. 
 
-```
+```tsx
 const store = new Store();
 const state = store.createState(defaultValue, options);
 
@@ -98,7 +98,7 @@ States are consumed by the client using the `useServerState` hook, which takes a
 `setValue` calls are implemented optimistic and the client library returns the new value before the request finishes. Ongoing requests are cancelled if `setValue` is called repeatedly and after the last request succeeded, the optimistic value is replaced by the server side value.
 
 ### useServerState
-```
+```tsx
 const [value, setValue, {loading, error}] = useServerState(defaultValue, options);
 ```  
 

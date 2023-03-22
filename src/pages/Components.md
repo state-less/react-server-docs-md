@@ -46,7 +46,7 @@ To render a serverside component, all you need to do is write a function.
 
 _/backend/src/components/HelloWorld.tsx_
 
-```
+```tsx
 const HelloWorld = () => {
   useEffect(() => {
     console.log('Hello World');
@@ -57,7 +57,7 @@ const HelloWorld = () => {
 
 _index.tsx_
 
-```
+```tsx
 import { render } from '@state-less/react-server';
 import { HelloWorld } from './components/HelloWorld';
 
@@ -73,7 +73,7 @@ Usually you want to be able to modify the state of a server-side component from 
 
 _backend/src/components/helloworld.tsx_
 
-```
+```tsx
 const HelloWorld = () => {
   const [count, setCount] = useState(0);
 
@@ -91,7 +91,7 @@ As the `setValue` function is not exposed to the client, the only possible inter
 
 _backend/src/index.tsx_
 
-```
+```tsx
 import { render } from '@state-less/react-server';
 import { HelloWorld } from './components/HelloWorld';
 
@@ -105,7 +105,7 @@ After that it is rehydrated on the client and the client can call the `increase`
 
 _frontend/src/components/HelloWorld.tsx_
 
-```
+```tsx
 const HelloWorld = () => {
   const [props] = useComponent('hello-world');
 

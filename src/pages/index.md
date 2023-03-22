@@ -18,7 +18,7 @@ React Server also provides built-in support for **server-side rendering**, which
 
 Finally, React Server offers a great developer experience, with hot reloading, code splitting, and other modern development tools. This makes it easy to iterate and test your app quickly, without having to worry about configuration and setup. With React Server, you can focus on building great user experiences, without getting bogged down in technical details.
 
-<sub>*\*NYI - Not yet implemented*
+<sub>*\*NYI - Not yet implemented*</sub>
 ## Installation
 
 ### Get a Server running

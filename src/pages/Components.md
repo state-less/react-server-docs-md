@@ -1,15 +1,16 @@
 # Components
+
 Server-side components are a concept in React Server. In this context, server-side components are reusable building blocks that are defined on the server and then rendered on the client.
 
 The idea is similar to front-end React components, but with a few key differences.
 
 They can be used to abstract away common functionality that you might want to reuse across multiple projects, such as authentication or database access, common microservices, or any other backend side logic.
 
-In terms of implementation, server-side components are typically defined as plain JavaScript functions that return React Server elements (JSON objects). 
+In terms of implementation, server-side components are typically defined as plain JavaScript functions that return React Server elements (JSON objects).
 
 These functions can use various techniques to handle data loading and other server-side concerns, such as making API requests, fetching data from a database, or authenticating a user.
 
-When a server-side component is rendered on the client, it receives the props defined on the server. These props can be used to pass data to the component, or to pass functions that can be called from the client to modify server-side state. 
+When a server-side component is rendered on the client, it receives the props defined on the server. These props can be used to pass data to the component, or to pass functions that can be called from the client to modify server-side state.
 
 The goal of server-side components is to make it easier to build modular, maintainable backends using familiar React syntax and patterns.
 
@@ -23,15 +24,15 @@ By using TSX to define server-side logic, you can write modular and declarative 
 
 In summary, the use case for server-side components is to create reusable components that can be executed on the server and passed to the client for further manipulation. Using TSX to define server-side logic allows for modular and declarative code that can be easily shared and reused throughout your application.
 
-
 ## Lifecycle
+
 When you render a server side component, the component is first executed on the server. The server can render a `<ServerSideProps />` component which is used to send all the props passed to it to the client and make them available in frontend code.
 
 When the component is rehydrated on the client, any functions that were passed will be mapped to callable functions that will call the function defined in the component on the serverside. This makes it a seamless experience to execute server side code from the client.
 
 This means that any function defined on the server and passed as a prop can be called from the client, allowing the client to modify server-side state by invoking server-side functions.
 
-It's important to note that server-side components not only define the data, but also the operations that can be performed on that data. 
+It's important to note that server-side components not only define the data, but also the operations that can be performed on that data.
 
 This means that any logic that is needed to modify the state of the component should be defined within the component itself.
 
@@ -43,16 +44,19 @@ Server-side components provide a powerful way to create dynamic, interactive web
 
 To render a serverside component, all you need to do is write a function.
 
-*/src/components/HelloWorld.tsx*
+_/backend/src/components/HelloWorld.tsx_
+
 ```
 const HelloWorld = () => {
   useEffect(() => {
     console.log('Hello World');
   })
-  return null;  
+  return null;
 }
 ```
-*index.tsx*
+
+_index.tsx_
+
 ```
 import { render } from '@state-less/react-server';
 import { HelloWorld } from './components/HelloWorld';
@@ -65,26 +69,28 @@ Of course you can create much more sophisticated components that can be rendered
 
 ### Manipulating Server State
 
-Usually you want to be able to modify the state of a server-side component from the client. This can be done by passing a function as a prop to the component.
+Usually you want to be able to modify the state of a server-side component from the client. This can be done by passing a function as a prop to `ServerSideProps`.
 
-*src/components/helloworld.tsx*
+_backend/src/components/helloworld.tsx_
+
 ```
 const HelloWorld = () => {
   const [count, setCount] = useState(0);
-  
+
   const increase = () => {
     setCount(count + 1);
   }
 
-  return <ServerSideProps count={count} increase={increase} />;;  
+  return <ServerSideProps count={count} increase={increase} />;;
 }
 ```
 
-Contrary to the previous example where the client could store an arbitrary value using the `useServerState` hook, the possible operations on the `count` state are well defined in this example. 
+Contrary to the previous example where the client could store an arbitrary value using the `useServerState` hook, in this example, the possible operations on the `count` state are well defined.
 
-As the `setValue` function is not exposed to the client, the only possible interaction with the count state from the client is using the `increase` function which increases the count by one.
+As the `setValue` function is not exposed to the client, the only possible interface to interact with the count state from the client is the `increase` function which increases the count by one. 
 
-*index.tsx*
+_backend/src/index.tsx_
+
 ```
 import { render } from '@state-less/react-server';
 import { HelloWorld } from './components/HelloWorld';
@@ -92,13 +98,13 @@ import { HelloWorld } from './components/HelloWorld';
 const server = render(<HelloWorld key="hello-world"/>);
 ```
 
-
 This renders a component that keeps track of the state `count` and provides a function `increase` that can be called from the client to increase the count.
 
-It looks like the component is now running on the server all the time, but it's not. The component is only executed on the server when it is rendered (on the client). 
+It looks like the component is now running on the server all the time, but it's not. The component is only executed on the server when it is rendered (on the client).
 After that it is rehydrated on the client and the client can call the `increase` function to modify the state of the component.
 
-*client.tsx*
+_frontend/src/components/HelloWorld.tsx_
+
 ```
 const HelloWorld = () => {
   const [props] = useComponent('hello-world');
@@ -111,25 +117,26 @@ const HelloWorld = () => {
 ```
 
 ## useComponent
+
 ```
 const [props, {loading, error}] = useComponent(key, options);
-```  
+```
 
-*useComponent*
-| Argument    | Description |
+_useComponent_
+| Argument | Description |
 |--|--|
-|`key: any`    | The serverside key of the component.  
-|`options: UseComponentOptions` | Additional options.  
+|`key: any` | The serverside key of the component.  
+|`options: UseComponentOptions` | Additional options.
 
-*Component*
-| Argument    | Description |
+_Component_
+| Argument | Description |
 |--|--|
-|`props`    | The serverside props passed to the `ServerSideProps` component.  
-|`loading`  | A boolean that indicates if the component is currently loading.  
-|`error`    | An error object that indicates if an error occurred while loading the component.
+|`props` | The serverside props passed to the `ServerSideProps` component.  
+|`loading` | A boolean that indicates if the component is currently loading.  
+|`error` | An error object that indicates if an error occurred while loading the component.
 
-*UseComponentOptions*
-| Property    | Description |
+_UseComponentOptions_
+| Property | Description |
 |--|--|
-|`key?`    | The key of the state on the server. If omitted a key is generated on the server.  
-|`scope?`  | The scope of the state on the server. If omitted, 'global' is used.
+|`key?` | The key of the state on the server. If omitted a key is generated on the server.  
+|`scope?` | The scope of the state on the server. If omitted, 'global' is used.

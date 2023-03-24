@@ -49,27 +49,26 @@ _/backend/src/components/HelloWorld.tsx_
 ```tsx
 const HelloWorld = () => {
   useEffect(() => {
-    console.log('Hello World');
-  })
+    console.log("Hello World");
+  });
   return null;
-}
+};
 ```
 
 _index.tsx_
 
 ```tsx
-import { render } from '@state-less/react-server';
-import { HelloWorld } from './components/HelloWorld';
+import { render } from "@state-less/react-server";
+import { HelloWorld } from "./components/HelloWorld";
 
-const server = render(<HelloWorld key="test"/>);
+const server = render(<HelloWorld key="test" />);
 ```
 
-This creates a component that logs "Hello World" to the console when it is rendered on the server. This is a very basic example and shows how easy it is to create a server-side component.
-Of course you can create much more sophisticated components that can be rendered on the server and then passed to the client for further manipulation.
+This example demonstrates a simple component that logs "Hello World" to the console when rendered on the server. It showcases the ease of creating a server-side component. Naturally, you can create more sophisticated components that are rendered on the server and subsequently passed to the client for additional manipulation.
 
 ### Manipulating Server State
 
-Usually you want to be able to modify the state of a server-side component from the client. This can be done by passing a function as a prop to `ServerSideProps`.
+Typically, you'll want the ability to alter the state of a server-side component from the client-side. This can be achieved by passing a function as a prop to the `ServerSideProps`.
 
 _backend/src/components/helloworld.tsx_
 
@@ -79,40 +78,41 @@ const HelloWorld = () => {
 
   const increase = () => {
     setCount(count + 1);
-  }
+  };
 
-  return <ServerSideProps count={count} increase={increase} />;;
-}
+  return <ServerSideProps count={count} increase={increase} />;
+};
 ```
 
-Contrary to the previous example where the client could store an arbitrary value using the `useServerState` hook, in this example, the possible operations on the `count` state are well defined.
+In contrast to the previous example, where the client could store an arbitrary value using the `useServerState` hook, this example clearly defines the possible operations on the `count` state.
 
-As the `setValue` function is not exposed to the client, the only possible interface to interact with the count state from the client is the `increase` function which increases the count by one. 
+Since the `setValue` function is not exposed to the client, the sole available interface for interacting with the count state from the client's perspective is the `increase` function, which increments the count by one.
 
 _backend/src/index.tsx_
 
 ```tsx
-import { render } from '@state-less/react-server';
-import { HelloWorld } from './components/HelloWorld';
+import { render } from "@state-less/react-server";
+import { HelloWorld } from "./components/HelloWorld";
 
-const server = render(<HelloWorld key="hello-world"/>);
+const server = render(<HelloWorld key="hello-world" />);
 ```
 
-This renders a component that keeps track of the state `count` and provides a function `increase` that can be called from the client to increase the count.
+This example above demonstrates a component that maintains the state count and provides a function called increase that can be invoked from the client to increment the count.
 
-It looks like the component is now running on the server all the time, but it's not. The component is only executed on the server when it is rendered (on the client).
-After that it is rehydrated on the client and the client can call the `increase` function to modify the state of the component.
+Although it may seem like the component is continuously running on the server, it isn't. The component is executed on the server only when it is rendered (on the client). Allowing the client to call the increase function to modify the state of the component.
 
 _frontend/src/components/HelloWorld.tsx_
 
 ```tsx
 const HelloWorld = () => {
-  const [props] = useComponent('hello-world');
+  const [props] = useComponent("hello-world");
 
-  return <div>
-    <h1>{props.count}</h1>
-    <button onClick={props.increase}>Increase</button>
-  </div>
+  return (
+    <div>
+      <h1>{props.count}</h1>
+      <button onClick={props.increase}>Increase</button>
+    </div>
+  );
 };
 ```
 

@@ -118,7 +118,7 @@ const HelloWorld = () => {
 
 ## useComponent
 
-```
+```tsx
 const [props, {loading, error}] = useComponent(key, options);
 ```
 

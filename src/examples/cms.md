@@ -1,83 +1,83 @@
 ## Let's build something
 
-To give you a better idea what's possible with React Server, let's build a rudimentary CMS, step by step.
+To give you a better idea what's possible with React Server, let's render some dynamic content by building a simple scaffold of a CMS.
 
 ### The Navigation
 
-Let's start by building a headless navigation that we can consume. 
+Let's start by building a headless navigation that we can consume.
+
 We won't bother adding authentication at the beginning. Let's make everyone an admin for now. It will be trivial to add authentication later.
 
 We dont' need much logic to implement a serverside navigation. We basically need CRUD functionality to add, remove, edit or delete entries to the navigation.
 
 We'll keep things simple and basic. Let's start by scaffolding a serverside component.
 
-*backend/src/components/Navigation*
+_backend/src/components/Navigation_
+
 ```tsx
-import { Scopes, useState } from '@state-less/react-server';
-import { ServerSideProps } from './ServerSideProps';
-import { v4 } from 'uuid';
+import { Scopes, useState } from "@state-less/react-server";
+import { ServerSideProps } from "./ServerSideProps";
+import { v4 } from "uuid";
 
 type NavigationEntry = {
-    id: string;
-    path: string;
-    title: string;
+  id: string;
+  path: string;
+  title: string;
 };
 
 export const isEntry = (entry: any): entry is NavigationEntry => {
-    return entry.id && entry.path && entry.title;
+  return entry.id && entry.path && entry.title;
 };
 
 /** This should check if the path contains a / and also that it doesn't contain any special characters */
 const isValidPath = (path: string) => {
-    return /^\/([0-9A-Za-z_\-][\/]?)*$/.test(path);
+  return /^\/([0-9A-Za-z_\-][\/]?)*$/.test(path);
 };
 
 export const Navigation = () => {
-    const [entries, setEntries] = useState<NavigationEntry[]>([], {
-        key: 'entries',
-        scope: Scopes.Client,
-    });
+  const [entries, setEntries] = useState<NavigationEntry[]>([], {
+    key: "entries",
+    scope: Scopes.Client,
+  });
 
-    const addEntry = (entry) => {
-        const id = v4();
-        const newEntry = { ...entry, id };
+  const addEntry = (entry) => {
+    const id = v4();
+    const newEntry = { ...entry, id };
 
-        if (!isEntry(newEntry)) {
-            throw new Error('Invalid entry');
-        }
+    if (!isEntry(newEntry)) {
+      throw new Error("Invalid entry");
+    }
 
-        if (!isValidPath(newEntry.path)) {
-            throw new Error('Invalid path');
-        }
+    if (!isValidPath(newEntry.path)) {
+      throw new Error("Invalid path");
+    }
 
-        if (entries.find((e) => e.path === entry.path)) {
-            throw new Error('Entry already exists');
-        }
-        setEntries([...entries, newEntry]);
-    };
+    if (entries.find((e) => e.path === entry.path)) {
+      throw new Error("Entry already exists");
+    }
+    setEntries([...entries, newEntry]);
+  };
 
-    const removeEntry = (id) => {
-        setEntries(entries.filter((entry) => entry.id !== id));
-    };
+  const removeEntry = (id) => {
+    setEntries(entries.filter((entry) => entry.id !== id));
+  };
 
-    return (
-        <ServerSideProps
-            entries={entries}
-            addEntry={addEntry}
-            removeEntry={removeEntry}
-        />
-    );
+  return (
+    <ServerSideProps
+      entries={entries}
+      addEntry={addEntry}
+      removeEntry={removeEntry}
+    />
+  );
 };
-
 ```
-
-We'll add an option to edit an entry later on. Let's just get the basic functionality of adding and removing entries to a list done.
 
 Head over to your client side code and create a `ServerNavigation.tsx` file under `src/server-components/`.
 
 The frontend code looks a bit more verbose, but don't get intimidated by it. It's actually very simple.
 
-*frontend/src/server-components/ServerNavigation*
+_frontend/src/server-components/ServerNavigation_
+
 ```tsx
 import {
   IconButton,
@@ -88,13 +88,13 @@ import {
   TextField,
   Alert,
   Button,
-  LinearProgress
-} from '@mui/material';
-import { useComponent } from '@state-less/react-client/dist/index';
-import { useState } from 'react';
-import { localClient } from '../lib/client';
+  LinearProgress,
+} from "@mui/material";
+import { useComponent } from "@state-less/react-client/dist/index";
+import { useState } from "react";
+import { localClient } from "../lib/client";
 
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 
 /** This should check if the path contains a / and also that it doesn't contain any special characters */
 const isValidPath = (path: string) => {
@@ -105,17 +105,17 @@ const errors = (messages) => {
   return messages
     .filter(([, isErr]) => isErr)
     .map(([msg]) => msg)
-    .join(', ');
+    .join(", ");
 };
 export const ServerNavigation = () => {
-  const [component, { error, loading }] = useComponent('navigation', {});
-  const [title, setTitle] = useState('');
-  const [path, setPath] = useState('');
+  const [component, { error, loading }] = useComponent("navigation", {});
+  const [title, setTitle] = useState("");
+  const [path, setPath] = useState("");
 
   const errs = [
-    ['Invalid path', !isValidPath(path)],
-    ['Path must start with /', path[0] !== '/'],
-    ['Title and path are required', !title || !path],
+    ["Invalid path", !isValidPath(path)],
+    ["Path must start with /", path[0] !== "/"],
+    ["Title and path are required", !title || !path],
   ];
   const titleMessage = errors(errs.slice(2));
   const pathMessage = errors(errs);

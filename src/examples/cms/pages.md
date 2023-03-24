@@ -1,14 +1,6 @@
 # Dynamic Pages
 
-To create a flexible way of defining content based on URLs, we'll implement a dynamic pages system. This system will allow us to define pages with specific paths and render the associated content whenever the path is accessed.
-
-First, we'll create a Pages container component that manages the pages we've defined. This component will be responsible for adding new pages and validating their paths and content. It will use the useState hook with Scopes.Client scope to ensure that each client gets their own version of the pages state.
-
-The DynamicPage component will receive a path from the client and attempt to find a matching page from the pages state. If a match is found, it will render the associated Page component. If no match is found or the path is not provided, it will render a default "404" page.
-
-The Page component will manage its content and provide a setContent function to allow updates. It will also use the useState hook with Scopes.Client scope to maintain its own state.
-
-Finally, the isValidPage function will be used to validate that a page has an id, a valid path, and content before being added to the pages state.
+In this backend code, the objective is to demonstrate how to create and manage dynamic content using React Server Components. By implementing a simple content management system (CMS) that allows adding, editing, and displaying pages with different paths and content, this example showcases the versatility and usefulness of React Server Components in building web applications. This approach enables developers to efficiently manage content and serve it to users, adapting to their specific needs and preferences.
 
 Let's go ahead and define the serverside component.
 

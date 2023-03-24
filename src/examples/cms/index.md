@@ -10,7 +10,7 @@ We won't bother adding authentication at the beginning. Let's make everyone an a
 
 We dont' need much logic to implement a serverside navigation. We basically need CRUD functionality to add, remove, edit or delete entries to the navigation.
 
-We'll keep things simple and basic. Let's start by scaffolding a serverside component.
+We'll keep things simple and basic. Let's start by writing a serverside component.
 
 _backend/src/components/Navigation_
 

@@ -2,6 +2,8 @@
 
 In this backend code, the objective is to demonstrate how to create and manage dynamic content using React Server Components. By implementing a simple content management system (CMS) that allows adding, editing, and displaying pages with different paths and content, this example showcases the versatility and usefulness of React Server Components in building web applications. This approach enables developers to efficiently manage content and serve it to users, adapting to their specific needs and preferences.
 
+A headless approach simplifies content management and delivery by decoupling the front-end presentation layer from the back-end data management, enabling seamless integration with various platforms and frameworks.
+
 Let's go ahead and define the serverside component.
 
 _backend/src/components/Pages.tsx_

@@ -4,7 +4,7 @@ The DynamicPageExample component aims to demonstrate the capabilities of renderi
 
 Note that we don't need any backend code in this example as we already have our navigation and the pages.
 
-```
+```tsx
 import {
   Box,
   List,
@@ -12,19 +12,19 @@ import {
   ListItemText,
   Paper,
   TextField,
-} from '@mui/material';
-import { useComponent } from '@state-less/react-client';
-import { useState } from 'react';
-import { ServerPageContainer } from '../../server-components/ServerPages';
+} from "@mui/material";
+import { useComponent } from "@state-less/react-client";
+import { useState } from "react";
+import { ServerPageContainer } from "../../server-components/ServerPages";
 
 export const DynamicPageExample = () => {
-  const [navigation, { loading, error }] = useComponent('navigation', {});
-  const [path, setPath] = useState('/');
+  const [navigation, { loading, error }] = useComponent("navigation", {});
+  const [path, setPath] = useState("/");
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: "flex" }}>
       <Paper square>
-        <List sx={{ minWidth: '250px', marginTop: '50px' }}>
+        <List sx={{ minWidth: "250px", marginTop: "50px" }}>
           {navigation?.props?.entries.map((child) => {
             return (
               <ListItem
@@ -41,7 +41,7 @@ export const DynamicPageExample = () => {
           })}
         </List>
       </Paper>
-      <Box sx={{ width: '100%' }}>
+      <Box sx={{ width: "100%" }}>
         <TextField
           fullWidth
           value={path}

@@ -3,7 +3,7 @@
 Let's create an example Todo App, which demonstrates how to build a functional and interactive application using React Server, complete with real-time updates and seamless state management.
 
 *backend/src/components/Todos.tsx*
-```
+```tsx
 import { Scopes, useState } from '@state-less/react-server';
 import { v4 } from 'uuid';
 import { ServerSideProps } from './ServerSideProps';
@@ -74,7 +74,7 @@ The Todo component represents an individual todo item and manages its own state,
 Let's head to the frontend implementation.
 
 *frontend/src/components/TodoApp.tsx*
-```
+```tsx
 import {
   Box,
   Button,

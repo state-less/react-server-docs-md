@@ -33,3 +33,46 @@ We are committed to fostering a welcoming and inclusive environment for all cont
 We're *excited* to have you join the React Server community, and we look forward to collaborating with you to make this project even better!
 
 Head over to [Github](https://github.com/state-less/react-server) to get started.
+
+## Branching Guide for React Server
+
+This branching guide outlines a strategy that utilizes feature branches, release branches, and fix branches to improve your team's workflow and overall software development process for React Server.
+
+### Branching Overview
+
+There are three main types of branches in this strategy:
+
+1. Feature branches: feature/my-feature
+2. Release branches: release/v2.0.1-pre-alpha
+3. Fix branches: fix/issue-description
+
+### Branching Workflow
+
+#### Feature Branches
+
+- Create a new branch from the latest release branch.
+- Name the branch using the format: feature/my-feature
+- Work on your feature, committing changes as needed.
+- When the feature is complete, create a pull request to merge it into the release branch.
+
+#### Release Branches
+
+- Create a new release branch from the master branch.
+- Name the branch using the format: release/v2.0.1-pre-alpha
+- Merge completed feature branches into the release branch in iterations.
+- Test and review the release branch thoroughly.
+- When the release branch is stable and ready, create a pull request to merge it into the master branch.
+- Tag the new release on the master branch with the appropriate SemVer.
+
+#### Fix Branches
+
+- Create a new branch from the latest release or master branch, depending on where the issue is found.
+- Name the branch using the format: fix/issue-description
+- Work on the fix, committing changes as needed.
+- Create a pull request to merge the fix branch into both the release and master branches.
+
+### Important Notes
+
+- Master branch only receives stable SemVer releases merged from release branches.
+- Release branches receive completed features and undergo testing and review before merging into the master branch.
+- Branch protection is enabled on the master branch to ensure stability.

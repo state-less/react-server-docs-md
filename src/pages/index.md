@@ -38,7 +38,7 @@ Create a new vite project and choose *React* as framework and *TypeScript* as va
 yarn create vite
 ```
 
-Now change to the newly created folder, install the dependencies and add `@apollo/client` and `state-less/react-client` to your project and start the server.
+Now go to the newly created folder, install the dependencies and add `@apollo/client` and `state-less/react-client` to your project and start the server.
 
 ```bash
 cd vite-project
@@ -47,7 +47,7 @@ yarn add @apollo/client state-less/react-client
 yarn dev
 ```
 
-#### Add a GraphQl client
+#### Instantiate a GraphQl client
 
 In order to connect to our backend, we need to create a GraphQl client. Create a new file under `/src/lib/client.ts` and paste the following content.
 
@@ -92,9 +92,9 @@ export default localClient;
 
 ```
 
-This creates a new GraphQl client instance which will be used by the React Server client.
-For now you need to manually create this file, but it will later be created by an initializer or react-client will provide a way to bootstrap the graphql client by providing a *react server url*. For now you need to manually create a GraphQl client.
+This sets up a new GraphQl client with subscriptions which will be used by the React Server client. The subscriptions are needed in order to make your app *reactive*.
 
+*Note: For now you need to manually create this file, but it will later be created by an initializer or react-client will provide a way to bootstrap the graphql client by providing a url pointing to a react server. For now you need to manually create and provide a GraphQl client.*
 ### Edit `src/App.tsx`
 
 It's been a long way, but all that's left to do is import the `client` and `useServerState` hook and find and replace the `useState` call with a `useServerState` call.
@@ -117,6 +117,6 @@ const [count, setCount] = useServerState(0, {
 If you don't want to pass a client object to each query, you can wrap your application in an `<Apolloprovider client={client} />`. React Server will use the provided client.
 *Note: You can still override the provided client if you pass one in the options*
 ### Play around
-That's all. **Make sure the backend react server is running** and click the button.
+That's all. Make sure the backend react server **is running** and click the button. 
 
-
+Explore the [examples](/examples) and read the docs.  

@@ -77,3 +77,17 @@ If you need help building something with React Server, consider checking out [St
 You can also visit the ##javascript IRC Channel on Quakenet.
 
 We have a [Discord Server](https://discord.gg/MJuVT4kE) available for any questions or chatting with like-minded individuals.
+
+## More
+### Get the documentation running yourself
+
+Interested in the documentation page itself? You can run it your own or contribute here:
+
+```bash
+git clone https://github.com/C5H8NNaO4/react-server-docs
+cd react-server-docs
+yarn install
+yarn dev
+```
+
+We are happy for any contributions.

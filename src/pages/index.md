@@ -46,6 +46,9 @@ yarn
 yarn add @apollo/client state-less/react-client
 yarn dev
 ```
+![screenshot](https://raw.githubusercontent.com/state-less/react-server-docs-md/master/images/screenshot.jpg)
+
+If you click the button, you will see the counter increase, but if you reload the page, the counter resets to 0. Let's connect the state to our backend to make it serverside and persist over page reloads.
 
 #### Instantiate a GraphQl client
 
@@ -112,7 +115,7 @@ const [count, setCount] = useServerState(0, {
 });
 ```
 
-![screenshot](https://raw.githubusercontent.com/state-less/react-server-docs-md/master/images/screenshot.jpg)
+
 
 If you don't want to pass a client object to each query, you can wrap your application in an `<Apolloprovider client={client} />`. React Server will use the provided client.
 *Note: You can still override the provided client if you pass one in the options*

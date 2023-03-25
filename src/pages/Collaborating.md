@@ -31,3 +31,5 @@ There are many ways you can contribute to React Server, including:
 We are committed to fostering a welcoming and inclusive environment for all contributors. We expect everyone participating in the React Server community to treat one another with respect, empathy, and kindness. Please review our Code of Conduct to learn more about our expectations for behavior.
 
 We're *excited* to have you join the React Server community, and we look forward to collaborating with you to make this project even better!
+
+Head over to [Github](https://github.com/state-less/react-server) to get started.

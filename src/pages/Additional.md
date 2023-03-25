@@ -70,7 +70,7 @@ If you're interested in this project, welcome aboard! Be sure to review our cont
 
 We aim to build a supportive and helpful community around React Server, but as it's a brand new project, activity is currently limited.
 
-For questions, bug reports, or contributions, head over to GitHub and raise an issue.
+For questions, bug reports, or contributions, head over to [GitHub](https://github.com/state-less/react-server/issuesF) and raise an issue.
 
 If you need help building something with React Server, consider checking out [Stackoverflow](stackoverflow.com) and [Reddit](https://www.reddit.com/r/learnprogramming). The community is very supportive—just ask your questions, and someone will help you.
 

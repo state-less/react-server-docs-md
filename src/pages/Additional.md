@@ -90,4 +90,14 @@ yarn install
 yarn dev
 ```
 
+Now get a server running and start hacking. 
+
+```bash
+git clone https://github.com/state-less/clean-starter.git -b react-server my-server
+cd my-server
+git remote remove origin
+yarn install
+yarn start
+```
+
 We are happy for any contributions.

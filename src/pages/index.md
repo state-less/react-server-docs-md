@@ -33,27 +33,90 @@ yarn start
 
 ### Get a Client running
 
+Create a new vite project and choose *React* as framework and *TypeScript* as variant.
 ```bash
 yarn create vite
-yarn add @apollo/client state-less/react-client
 ```
 
-#### Edit `src/App.tsx`
+Now change to the newly created folder, install the dependencies and add `@apollo/client` and `state-less/react-client` to your project and start the server.
 
-Import the `useServerState` hook and find and replace the `useState` call.
+```bash
+cd vite-project
+yarn
+yarn add @apollo/client state-less/react-client
+yarn dev
+```
 
-```tsx
+#### Add a GraphQl client
+
+In order to connect to our backend, we need to create a GraphQl client. Create a new file under `/src/lib/client.ts` and paste the following content.
+
+```ts
+import { ApolloClient, InMemoryCache, split, HttpLink } from '@apollo/client';
+import { WebSocketLink } from '@apollo/client/link/ws';
+import { getMainDefinition } from '@apollo/client/utilities';
+
+// Create an HTTP link
+const localHttp = new HttpLink({
+  uri: 'http://localhost:4000/graphql',
+});
+
+// Create a WebSocket link
+const localWs = new WebSocketLink({
+  uri: `ws://localhost:4000/graphql`,
+  options: {
+    reconnect: true,
+  },
+});
+
+// Use the split function to direct traffic between the two links
+const local = split(
+  ({ query }) => {
+    const definition = getMainDefinition(query);
+    return (
+      definition.kind === 'OperationDefinition' &&
+      definition.operation === 'subscription'
+    );
+  },
+  localWs,
+  localHttp
+);
+
+// Create the Apollo Client instance
+export const localClient = new ApolloClient({
+  link: local,
+  cache: new InMemoryCache(),
+});
+
+export default localClient;
+
+```
+
+This creates a new GraphQl client instance which will be used by the React Server client.
+For now you need to manually create this file, but it will later be created by an initializer or react-client will provide a way to bootstrap the graphql client by providing a *react server url*. For now you need to manually create a GraphQl client.
+
+### Edit `src/App.tsx`
+
+It's been a long way, but all that's left to do is import the `client` and `useServerState` hook and find and replace the `useState` call with a `useServerState` call.
+
+```ts
 import { useServerState } from "@state-less/react-client";
+import client from "./lib/client";
 
 // ...
 
 const [count, setCount] = useServerState(0, {
   key: "count",
   scope: "global",
+  client
 });
 ```
 
-### Play around
+![screenshot](../../images/screenshot.jpg)
 
-This is all it needs to get a server and client running.
-You can now manipulate the state from a graphql client.
+If you don't want to pass a client object to each query, you can wrap your application in an `<Apolloprovider client={client} />`. React Server will use the provided client.
+*Note: You can still override the provided client if you pass one in the options*
+### Play around
+That's all. **Make sure the backend react server is running** and click the button.
+
+

@@ -14,28 +14,17 @@ Another great benefit of React Server is its **robustness**, as it's built with 
 
 **Component-driven development** is another key feature of React Server. By breaking down your Backend / UI into smaller, reusable components, you can develop faster and more efficiently, without sacrificing quality. Components can be easily shared and reused across different parts of your app, making it easy to maintain a consistent design language and reduce duplication.
 
-React Server also provides built-in support for **server-side rendering**, which greatly improves your app's performance and search engine optimization. By rendering your app on the server-side, you can reduce the amount of client-side rendering needed, resulting in faster load times and improved SEO rankings. (NYI*)
+React Server also provides built-in support for **server-side rendering**, which greatly improves your app's performance and search engine optimization. By rendering your app on the server-side, you can reduce the amount of client-side rendering needed, resulting in faster load times and improved SEO rankings. (NYI\*)
 
 Finally, React Server offers a great developer experience, with hot reloading, code splitting, and other modern development tools. This makes it easy to iterate and test your app quickly, without having to worry about configuration and setup. With React Server, you can focus on building great user experiences, without getting bogged down in technical details.
 
-*\*NYI - Not yet implemented*
-## Installation
+_\*NYI - Not yet implemented_
 
+## Installation
 ### Get a Server running
 
 ```bash
-npx init state-less/react-server my-server
-cd .my-server
-npm start
-```
-*This is currently only working on windows*
-
-#### Troubleshooting.
-
-In case the initializiation did not work you can manually set up a server. It's a little more work but it's worth it.
-
-```bash
-git clone state-less/clean-starter -b react-server my-server
+git clone https://github.com/state-less/clean-starter.git -b react-server my-server
 cd my-server
 git remote remove origin
 yarn install
@@ -54,14 +43,14 @@ yarn add @apollo/client state-less/react-client
 Import the `useServerState` hook and find and replace the `useState` call.
 
 ```tsx
-import { useServerState } from '@state-less/react-client'
+import { useServerState } from "@state-less/react-client";
 
 // ...
 
 const [count, setCount] = useServerState(0, {
-    key: 'count',
-    scope: 'global',
-})
+  key: "count",
+  scope: "global",
+});
 ```
 
 ### Play around

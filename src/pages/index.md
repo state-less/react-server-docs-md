@@ -112,7 +112,7 @@ const [count, setCount] = useServerState(0, {
 });
 ```
 
-![screenshot](../../images/screenshot.jpg)
+![screenshot](https://raw.githubusercontent.com/state-less/react-server-docs-md/master/images/screenshot.jpg)
 
 If you don't want to pass a client object to each query, you can wrap your application in an `<Apolloprovider client={client} />`. React Server will use the provided client.
 *Note: You can still override the provided client if you pass one in the options*

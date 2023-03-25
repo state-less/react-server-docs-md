@@ -7,6 +7,34 @@ Handling errors in React Server is easy and intuitive. Simply throw errors withi
 React Server does not catch errors automatically. Instead, errors bubble up to the main render call. This design choice ensures that you have full control over error handling within your application.
 
 If you have any valuable ideas, refer to this [issue](https://github.com/state-less/react-server/issues/18).
+
+## Hydrating
+
+You can hydrate `useComponent` calls from data you obtained from a BFF such as Next.js or from a parent component that renders it's children.
+
+This is important if you need reactivity in child components. If you don't hydrate the `useComponent` call, the child component needs to wait for their props to load from the server before displaying any data. 
+
+By hydrating the nested `useComponent` call, you can make sure that the hook returns the hydration data synchronously. This means that any calls to the hook during SSR or child rendering have their data available immediately. 
+
+
+```tsx
+    const MyParentComponent = () => {
+        const [component, {error, loading}] = useComponent('todos');
+
+        return <div>
+            {component?.children.map((child) => (<ChildComponent data={child} >))}
+        </div>
+    }
+
+    const MyChildComponent = ({data}) => {
+        const [component, {error, loading}] = useComponent(data.key, { data });
+
+        return <div>
+            {JSON.stringify(component)}
+        </div>
+
+    }
+```
 ## Security Considerations
 
 React Server is publicly accessible via a GraphQL endpoint, which necessitates the careful handling of sensitive data in components.

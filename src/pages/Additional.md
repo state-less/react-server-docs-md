@@ -18,22 +18,21 @@ By hydrating the nested `useComponent` call, you can make sure that the hook ret
 
 
 ```tsx
-    const MyParentComponent = () => {
-        const [component, {error, loading}] = useComponent('todos');
+const Todos = () => {
+    const [component, {error, loading}] = useComponent('todos');
 
-        return <div>
-            {component?.children.map((child) => (<ChildComponent data={child} >))}
-        </div>
-    }
+    return <div>
+        {component?.children.map((child) => (<ChildComponent data={child} />))}
+    </div>
+}
 
-    const MyChildComponent = ({data}) => {
-        const [component, {error, loading}] = useComponent(data.key, { data });
+const Todo = ({data}) => {
+    const [component, {error, loading}] = useComponent(data.key, { data });
 
-        return <div>
-            {JSON.stringify(component)}
-        </div>
-
-    }
+    return <div>
+        {JSON.stringify(component)}
+    </div>
+}
 ```
 ## Security Considerations
 

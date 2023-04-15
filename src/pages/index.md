@@ -21,6 +21,7 @@ Finally, React Server offers a great developer experience, with hot reloading, c
 _\*NYI - Not yet implemented_
 
 ## Installation
+At least node v16 is required.
 
 ### Get a Server running
 

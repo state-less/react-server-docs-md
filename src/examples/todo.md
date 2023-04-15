@@ -2,6 +2,13 @@
 
 Let's create an example Todo App, which demonstrates how to build a functional and interactive application using React Server, complete with real-time updates and seamless state management.
 
+You need to install material ui if you want to build this yourself. 
+
+```
+yarn add @mui/material @mui/icons-material
+yarn add @emotion/react @emotion/styled
+```
+
 *backend/src/components/Todos.tsx*
 ```tsx
 import { Scopes, useState } from '@state-less/react-server';

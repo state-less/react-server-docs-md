@@ -21,7 +21,11 @@ Finally, React Server offers a great developer experience, with hot reloading, c
 _\*NYI - Not yet implemented_
 
 ## Installation
-At least node v16 is required.
+### Prerequisites
+Before we begin, ensure that you have the following installed on your local machine:
+
+Node.js (version 16 or higher)
+npm (version 8 or higher)
 
 ### Get a Server running
 

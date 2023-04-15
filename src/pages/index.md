@@ -5,7 +5,7 @@ TLDR;
 - Built with GraphQL and TypeScript for robustness and type safety
 - Component-driven development for modularity and reusability
 - Seamless isomorphic experience with React components as a unified interface
-- ~~Automatic server-side rendering for fast and efficient page loads~~ (NYI)
+- [Server-side rendering](/SSR) for fast and efficient page loads
 - ~~Vertical scaling support for scalability and performance.~~ (NYI)
 
 React Server allows for a seamless **isomorphic** experience, as it proposes React components as a unified interface to bridge the gap between server and client. This means that you can easily build and render components on the server-side and then send them to the client-side for further rendering and interactivity. This creates a smooth and uninterrupted user experience, where the server and client are working together in perfect harmony.
@@ -21,6 +21,7 @@ Finally, React Server offers a great developer experience, with hot reloading, c
 _\*NYI - Not yet implemented_
 
 ## Installation
+
 ### Get a Server running
 
 ```bash
@@ -33,7 +34,8 @@ yarn start
 
 ### Get a Client running
 
-Create a new vite project and choose *React* as framework and *TypeScript* as variant.
+Create a new vite project and choose _React_ as framework and _TypeScript_ as variant.
+
 ```bash
 yarn create vite
 ```
@@ -46,6 +48,7 @@ yarn
 yarn add @apollo/client state-less/react-client
 yarn dev
 ```
+
 ![screenshot](https://raw.githubusercontent.com/state-less/react-server-docs-md/master/images/screenshot.jpg)
 
 If you click the button, you will see the counter increase, but if you reload the page, the counter resets to 0. Let's connect the state to our backend to make it serverside and persist over page reloads.
@@ -55,13 +58,13 @@ If you click the button, you will see the counter increase, but if you reload th
 In order to connect to our backend, we need to create a GraphQl client. Create a new file under `/src/lib/client.ts` and paste the following content.
 
 ```ts
-import { ApolloClient, InMemoryCache, split, HttpLink } from '@apollo/client';
-import { WebSocketLink } from '@apollo/client/link/ws';
-import { getMainDefinition } from '@apollo/client/utilities';
+import { ApolloClient, InMemoryCache, split, HttpLink } from "@apollo/client";
+import { WebSocketLink } from "@apollo/client/link/ws";
+import { getMainDefinition } from "@apollo/client/utilities";
 
 // Create an HTTP link
 const localHttp = new HttpLink({
-  uri: 'http://localhost:4000/graphql',
+  uri: "http://localhost:4000/graphql",
 });
 
 // Create a WebSocket link
@@ -77,8 +80,8 @@ const local = split(
   ({ query }) => {
     const definition = getMainDefinition(query);
     return (
-      definition.kind === 'OperationDefinition' &&
-      definition.operation === 'subscription'
+      definition.kind === "OperationDefinition" &&
+      definition.operation === "subscription"
     );
   },
   localWs,
@@ -92,12 +95,12 @@ export const localClient = new ApolloClient({
 });
 
 export default localClient;
-
 ```
 
-This sets up a new GraphQl client with subscriptions which will be used by the React Server client. The subscriptions are needed in order to make your app *reactive*.
+This sets up a new GraphQl client with subscriptions which will be used by the React Server client. The subscriptions are needed in order to make your app _reactive_.
 
-*Note: For now you need to manually create this file, but it will later be created by an initializer or react-client will provide a way to bootstrap the graphql client by providing a url pointing to a react server. For now you need to manually create and provide a GraphQl client.*
+_Note: For now you need to manually create this file, but it will later be created by an initializer or react-client will provide a way to bootstrap the graphql client by providing an url pointing to a react server. For now you need to manually create and provide a GraphQl client._
+
 ### Edit `src/App.tsx`
 
 It's been a long way, but all that's left to do is import the `client` and `useServerState` hook and find and replace the `useState` call with a `useServerState` call.
@@ -111,15 +114,15 @@ import client from "./lib/client";
 const [count, setCount] = useServerState(0, {
   key: "count",
   scope: "global",
-  client
+  client,
 });
 ```
 
+If you don't want to pass a client object to each query, you can wrap your application in an `<ApolloProvider client={client} />`. React Server will use the provided client.
+_Note: You can still override the provided client if you pass one in the options_
 
-
-If you don't want to pass a client object to each query, you can wrap your application in an `<Apolloprovider client={client} />`. React Server will use the provided client.
-*Note: You can still override the provided client if you pass one in the options*
 ### Play around
-That's all. Make sure the backend react server **is running** and click the button. 
 
-Explore the [examples](/examples) and read the docs.  
+That's all. Make sure the backend react server **is running** and click the button.
+
+Explore the [examples](/examples) and read the docs.

@@ -42,13 +42,13 @@ yarn start
 Create a new vite project and choose _React_ as framework and _TypeScript_ as variant.
 
 ```bash
-yarn create vite
+yarn create vite my-frontend
 ```
 
 Now go to the newly created folder, install the dependencies and add `@apollo/client` and `state-less/react-client` to your project and start the server.
 
 ```bash
-cd vite-project
+cd my-frontend
 yarn
 yarn add @apollo/client state-less/react-client
 yarn dev
@@ -60,7 +60,7 @@ If you click the button, you will see the counter increase, but if you reload th
 
 #### Instantiate a GraphQl client
 
-In order to connect to our backend, we need to create a GraphQl client. Create a new file under `/src/lib/client.ts` and paste the following content.
+In order to connect to our backend, we need to create a GraphQl client. Create a new file under `my-frontend/src/lib/client.ts` and paste the following content.
 
 ```ts
 import { ApolloClient, InMemoryCache, split, HttpLink } from "@apollo/client";

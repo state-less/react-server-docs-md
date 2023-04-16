@@ -22,7 +22,7 @@ const MyComponent = () => {
         if (typeof n !== 'number') {
             throw new Error('Invalid input');
         }
-        setCount(n);
+        _setCount(n);
     }
 
     return <ServerSideProps
@@ -113,7 +113,7 @@ _useServerState_
 | Argument | Description |
 |--|--|
 |`defaultValue: any` | The value of the state on the server, or the default value if the state is not yet available.  
-|`options: UseServerStateOptions` | A function that updates the state on the server.
+|`options: UseServerStateOptions` | An object with `key` and `scope`.
 
 _ServerState_
 | Argument | Description |

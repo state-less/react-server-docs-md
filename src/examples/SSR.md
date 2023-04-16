@@ -37,6 +37,25 @@ Return the data from the component as props.
 
 Let's render our second hello world example which is a simple counter button which increases the count when you click on it.
 
+You will need to create an additional apollo client for SSR because websockets aren't supported (and not needed) during server side rendering. 
+
+*frontend/src/lib/client.tsx*
+```tsx
+// ...
+
+export const ssrClient = new ApolloClient({
+  link: localHttp,
+  cache: new InMemoryCache(),
+  defaultOptions: {
+    query: {
+      fetchPolicy: 'network-only', // Always fetch from the network first
+    },
+  }
+});
+
+// ...
+```
+
 *frontend/src/pages/test.tsx*
 ```tsx
 import { renderComponent, useComponent } from '@state-less/react-client';

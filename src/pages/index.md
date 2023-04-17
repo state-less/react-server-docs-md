@@ -123,10 +123,6 @@ const [count, setCount] = useServerState(0, {
   client,
 });
 ```
-
-If you don't want to pass a client object to each query, you can wrap your application in an `<ApolloProvider client={client} />`. React Server will use the provided client.
-_Note: You can still override the provided client if you pass one in the options_
-
 ### Play around
 
 That's all. Make sure the backend react server **is running** and click the button.

@@ -66,6 +66,26 @@ const server = render(<HelloWorld key="test" />);
 
 This example demonstrates a simple component that logs "Hello World" to the console when rendered on the server. It showcases the ease of creating a server-side component. Naturally, you can create more sophisticated components that are rendered on the server and subsequently passed to the client for additional manipulation.
 
+### ServerSideProps
+`ServerSideProps` is a utility in React Server that enables you to pass server-side data or functions to client-side components seamlessly. It acts as a wrapper around the server-side component, making it easy to transfer the necessary data and functions to be consumed on the client-side.
+
+To use `ServerSideProps`, you would typically create a server-side component that returns an instance of `ServerSideProps` with the required data and functions as props. These props will be serialized and sent to the client-side component, allowing you to access and use them just as you would with regular React components.
+
+```
+import { ServerSideProps, useState} from '@state-less/react-server';
+
+export const MyServerComponent = () => {
+  const [state, setState] = useState('foo')
+  return (
+    <ServerSideProps
+      key="my-server-component-props"
+      state={state}
+      setState={setState}
+    />
+  );
+};
+```
+This example will pass both the value of the variable state as well as the function to update that state down to the client, where it can be consumed using the `useComponent` hook of *@state-less/react-client*.
 ### Manipulating Server State
 
 Typically, you'll want the ability to alter the state of a server-side component from the client-side. This can be achieved by passing a function as a prop to the `ServerSideProps`.

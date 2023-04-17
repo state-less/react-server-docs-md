@@ -1,6 +1,14 @@
+
 # Poll Component Example
 
 In this example, we'll demonstrate how to create a simple poll component with React Server. The component will manage the voting process for a poll, allowing users to vote for their favorite option.
+
+## Authentication
+
+Don't be confused if the poll example shows an error "Not Authorized". This is because the component has code to authenticate rendering of the component. 
+
+If you wish to remove the authentication, just remove the call to `authenticate` in the Poll component. 
+If you want to experiment with authentication, please refer to the [authentication](/authentication) page for instructions on how to implement server and clientside authentication (it's straightforward, try it out).
 
 ## Backend Code
 

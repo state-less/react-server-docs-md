@@ -107,7 +107,7 @@ This sets up a new GraphQl client with subscriptions which will be used by the R
 
 _Note: For now you need to manually create this file, but it will later be created by an initializer or react-client will provide a way to bootstrap the graphql client by providing an url pointing to a react server. For now you need to manually create and provide a GraphQl client._
 
-### Edit `src/App.tsx`
+### Edit `my-frontend/src/App.tsx`
 
 It's been a long way, but all that's left to do is import the `client` and `useServerState` hook and find and replace the `useState` call with a `useServerState` call.
 

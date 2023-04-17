@@ -24,9 +24,10 @@ _\*NYI - Not yet implemented_
 ### Prerequisites
 Before we begin, ensure that you have the following installed on your local machine:
 
-Node.js (version 16 or higher)
+Node.js (**version 16** or higher)  
 npm (version 8 or higher)
 
+Note, that using node v14 or below will throw an error. This will be fixed in a future release, but for now you have to use node v16 or higher.
 ### Get a Server running
 
 ```bash

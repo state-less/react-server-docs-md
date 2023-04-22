@@ -245,7 +245,6 @@ const Comment = ({ comment, del, canDelete }) => {
   const Icon = StrategyIcons[comment.strategy];
   return (
     <Card sx={{ m: 1 }}>
-      {JSON.stringify(comment)}
       <CardContent sx={{ display: 'flex' }}>
         <Typography variant="body1">{comment.message}</Typography>
       </CardContent>

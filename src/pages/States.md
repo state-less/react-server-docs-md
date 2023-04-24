@@ -48,30 +48,26 @@ React Server employs `PubSub` to notify clients about changes to states. This al
 
 ### States vs. Data
 
-It is crucial to understand that `useServerState` should not be considered a substitute for a database. While it might be tempting to use it as such, it is not recommended. Just as you wouldn't use `useState` to create a database on the client side, `useServerState` should be viewed as an extension of `useState` for the server side, providing a state that exists on the server instead of the client.
+It's important to keep in mind that use `useServerState`  is not intended to replace a database. While it may seem like a good idea to use it as such, it is not recommended. Just as you wouldn't rely on `useState` to create a database on the client side, `useServerState` should be thought of as an extension of `useState` for the server side, providing a state that exists on the server rather than the client.
 
-Using a state gives you a live, reactive property synchronized across all clients. However, consider situations where you collect large amounts of form data. This data should not be stored in a state but in a database. The reason is that querying such data becomes challenging. Data in states are stored in a way that makes it easy to access and display in a client, but complex queries are needed for processing and analyzing the data later. Typically, data in states within a React Server application are tied to components, meaning the database structure mirrors your application's structure, simplifying data display queries but complicating data manipulation or processing queries.
+Using a state provides you with a live, reactive property that is synchronized across all clients. However, when dealing with large amounts of form data, it's important to store that data in a database rather than a state. This is because querying such data can become challenging. Data in states are structured in a way that makes it easy to access and display in a client, but complex queries are needed for processing and analyzing the data later. Typically, data in states within a React Server application are tied to components, meaning the database structure mirrors your application's structure, simplifying data display queries but complicating data manipulation or processing queries.
 
-Therefore, it is recommended to use a traditional database for storing data you will need to access outside your application's scope. If the data never leaves your React Server application, you can store it in a state as long as it is appropriate.
+It is recommended to use a traditional database to store data that you need to access outside of your application's scope. If the data never leaves your React Server application, you can store it in a state as long as it is appropriate.
 
-You can also query data from a database on the server side and maintain a copy of the data in a state for reactivity. However, you would need to implement server-side logic to check the database for changes (e.g., using DynamoDB streams or PostgreSQL triggers). Although you can poll the database on the server and update the state with new data when it changes, more efficient techniques exist for making your data reactive.
+You can also query data from a database on the server side and maintain a copy of the data in a state for reactivity. However, you would need to implement server-side logic to check the database for changes (e.g., using DynamoDB streams or PostgreSQL triggers). Although you can poll the database on the server and update the state with new data when it changes, there are more efficient techniques available for making your data reactive.
 
 ## Stores
-States are housed in Stores, which are responsible for persisting and retrieving states. By externalizing the states into a database, your backend or BFF can operate in a stateless manner, fetching the state from a database instead of relying on memory.
+States in React Server are housed in Stores, which are responsible for persisting and retrieving states. By externalizing states into a database, your backend or BFF can operate in a stateless manner, fetching the state from a database instead of relying on memory. This approach enables your entire backend to run on serverless infrastructure, as no data needs to be stored in memory and every request can be handled individually.
 
-This approach enables your entire backend to run on serverless infrastructure, as no data needs to be stored in memory and every request can be handled individually.
+To create a new state, you need to instantiate a Store. The Store persists and retrieves states and can transport them to various databases for persistence (e.g., Redis, PostgreSQL, DynamoDB, etc.). Utilizing a unified interface for accessing and manipulating states allows you to change the database handling states later without altering your implementation.
 
-To create a new state, you must first instantiate a store. The store is in charge of persisting and retrieving states and can transport them to various databases for persistence (e.g., Redis, PostgreSQL, DynamoDB, etc.).
-
-Utilizing a unified interface for accessing and manipulating states allows you to change the database handling states later without altering your implementation.
-
-This approach offers some benefits as well as some drawbacks:
+However, this approach comes with some benefits as well as drawbacks:
 
 * It provides a simplified interface to a database, but it cannot replace one.
 * Crafting efficient queries to access data across components can be challenging and slow, as it may involve application code, a relational database, and custom SQL.
 * As it is essentially a key-value store, it comes with inherent limitations.
 
-The good news is that you can (and should) write custom data fetching logic whenever necessary. Consequently, it is recommended to use states only when you require a reactive, stateful variable on the server that syncs with clients in real-time. States should not be mistaken for a database and should not be treated as such.
+It's important to note that States should not be mistaken for a database and should not be treated as such. You can (and should) write custom data fetching logic whenever necessary. It's recommended to use States only when you require a reactive, stateful variable on the server that syncs with clients in real-time.
 
 ```tsx
 const store = new Store();

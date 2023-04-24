@@ -2,19 +2,17 @@
 
 ## Error Handling
 
-Handling errors in React Server is easy and intuitive. Simply throw errors within components or functions, and they will be transmitted to the client via GraphQL, where they are managed gracefully. Access the error from the `useComponent` call like this: `const [value, { error }] = useComponent('hello-world')`.
+React Server makes it simple and intuitive to handle errors. To throw an error within a component or function, simply use the throw statement. The error will be transmitted to the client via GraphQL and can be gracefully managed there. To access the error from the `useComponent` call, use the following syntax: `const [value, { error }] = useComponent('hello-world')`.
 
-React Server does not catch errors automatically. Instead, errors bubble up to the main render call. This design choice ensures that you have full control over error handling within your application.
+It's worth noting that React Server doesn't automatically catch errors. Instead, errors bubble up to the main render call. This approach ensures that you have complete control over error handling in your application.
 
 If you have any valuable ideas, refer to this [issue](https://github.com/state-less/react-server/issues/18).
 
 ## Hydrating
 
-You can hydrate `useComponent` calls from data you obtained from a BFF such as Next.js or from a parent component that renders it's children.
+To enable reactivity in child components, you can hydrate `useComponent` calls with data obtained from a Backend-for-Frontend (BFF) like Next.js, or from a parent component that renders its children.
 
-This is important if you need reactivity in child components. If you don't hydrate the `useComponent` call, the child component needs to wait for their props to load from the server before displaying any data. 
-
-By hydrating the nested `useComponent` call, you can make sure that the hook returns the hydration data synchronously. This means that any calls to the hook during SSR or child rendering have their data available immediately. 
+If you don't hydrate the `useComponent` the child component will need to wait for its props to load from the server before displaying any data. By hydrating the nested `useComponent` call, you can ensure that the hook returns the hydration data synchronously. As a result, any calls to the hook during Server-Side Rendering (SSR) or child rendering will have immediate access to their data.
 
 
 ```tsx
@@ -52,17 +50,17 @@ React Server is built for use with React, which inherently guards against cross-
 
 ### Authentication
 
-In React Server, authentication is performed using bearer tokens and OAuth. Here's an explanation of how this works, with a focus on security considerations:
+To ensure secure authentication in React Server, two methods are used: bearer tokens and OAuth. Here's how they work and some security considerations to keep in mind:
 
-1. Bearer tokens: Bearer tokens are used to authenticate the user making a request to the React Server. A bearer token is a cryptographically signed string that is sent as part of the HTTP Authorization header in the format Bearer <token>. The token contains information about the user and their permissions, allowing the server to verify the user's identity and grant access to resources based on the user's permissions.
+1. Bearer tokens: To authenticate users making requests to the React Server, bearer tokens are used. These tokens are cryptographically signed strings that are included in the HTTP Authorization header in the format "Bearer <token>". They contain information about the user and their permissions, allowing the server to verify the user's identity and grant access to resources based on their permissions.
 
-2. OAuth: OAuth is an open standard for authorization that allows users to grant third-party applications access to their information on other services, without sharing their credentials. OAuth relies on access tokens, which are issued by an authorization server and can be used by the application to access the user's information. In the context of React Server, OAuth can be used as a way to authenticate users with external services, such as Google, Facebook, or other identity providers.
+2. OAuth: OAuth is an authorization standard that allows third-party applications access to user information on other services without sharing credentials. Access tokens, issued by an authorization server, are used to access user information. In React Server, OAuth can be used to authenticate users with external services such as Google, Facebook, or other identity providers.
 
-When an incoming request arrives at React Server, the server checks the Authorization header for a valid bearer token. If a token is found, React Server validates the token to ensure it is authentic and not expired. If the token is valid, the server extracts the user's information and permissions from the token and proceeds with processing the request.
+When a request arrives at React Server, the server checks the Authorization header for a valid bearer token. The token is validated to ensure it is authentic and not expired. If it is valid, the server extracts user information and permissions from the token and processes the request.
 
-In the case of OAuth, the React Server relies on the client-side library to handle the OAuth flow with the external service. Once the client has obtained an access token and an ID token from the external service, it can send these tokens to the React Server for authentication. React Server then verifies the tokens with the external service and creates a new session for the user.
+For OAuth, the client-side library handles the OAuth flow with the external service. Once the client obtains an access token and an ID token from the external service, it sends them to React Server for authentication. The server then verifies the tokens with the external service and creates a new session for the user.
 
-* Always use HTTPS to ensure that the bearer tokens and OAuth tokens are transmitted securely between the client and the server, preventing eavesdropping or man-in-the-middle attacks.
+* To ensure secure authentication, HTTPS should always be used to prevent eavesdropping or man-in-the-middle attacks when transmitting bearer tokens and OAuth tokens between the client and the server.
 * ~~Implement a proper token expiration policy. Short-lived tokens can help minimize the potential impact of a token being compromised. You can use refresh tokens to obtain new access tokens without requiring the user to re-authenticate.~~ (NYI*)
 
 *\*NYI - Not yet implemented*

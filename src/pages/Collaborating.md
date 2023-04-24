@@ -2,11 +2,11 @@
 We're thrilled to have you interested in collaborating on React Server! We believe that open-source projects thrive when developers from all backgrounds and skill levels come together to contribute and collaborate. Your participation is invaluable to the project's growth, improvement, and success.
 
 ## How to Get Started
-1. Join the Community: First, join our community by signing up for our mailing list, following our social media accounts, or joining our chat rooms. This will keep you updated with the latest news, releases, and discussions about React Server.
+1. Join the Community: First, join our community to stay up-to-date with the latest news, releases, and discussions about React Server. You can sign up for our mailing list, follow our social media accounts, or join our chat rooms.
 
-2. Explore the Codebase: Familiarize yourself with the codebase by cloning the repository, setting up the development environment, and running the project locally. This will help you understand the project's structure, organization, and coding conventions.
+2. Explore the Codebase: Get familiar with the codebase by cloning the repository, setting up the development environment, and running the project locally. This will help you understand the project's structure, organization, and coding conventions.
 
-3. Read the Documentation: Carefully read through the project's documentation, including the README, contributing guidelines, and any other relevant resources. This will give you a better understanding of how to contribute effectively.
+3. Read the Documentation: Read through the project's documentation carefully, including the README, contributing guidelines, and any other relevant resources. This will give you a better understanding of how to contribute effectively.
 
 4. Find an Issue: Browse the project's issue tracker to find an issue that interests you. Look for issues labeled "good first issue" or "help wanted" as these are usually beginner-friendly and have been identified as priorities by the project maintainers.
 

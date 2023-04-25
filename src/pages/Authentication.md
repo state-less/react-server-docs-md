@@ -132,4 +132,20 @@ export const sessionInfo = (session) => {
 };
 ```
 
+## Provider
+
+In order for the `authenticate` call to succeed, you need to wrap your App in an `AuthProvder`. The provider exposes information about the current session and brokers authentication with the server. 
+The `AuthenticationProvider` needs to be wrapped in an `ApolloProvider` or be given an apollo client instance.
+```tsx
+import { AuthProvider } from '@state-less/react-client';
+
+const App = () => {
+  <ApolloProvider client={localClient}>
+    <AuthProvider>  
+      <Main />
+    </AuthProvider>
+  </ApolloProvider>
+}
+```
+
 This is it, you can now enjoy authenticating with the server.

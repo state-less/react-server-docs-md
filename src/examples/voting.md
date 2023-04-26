@@ -29,70 +29,83 @@ Create the following new files under their respective paths and paste the conten
 _backend/src/components/Votings.tsx_
 
 ```tsx
-import { Scopes, useState } from '@state-less/react-server'
-import { ServerSideProps } from './ServerSideProps'
+import { Scopes, useState } from '@state-less/react-server';
+import { ServerSideProps } from './ServerSideProps';
 
 type VotingObject = {
-	title: string
-	upvotes: number
-	downvotes: number
-	key?: string
-}
+    title: string;
+    upvotes: number;
+    downvotes: number;
+    key?: string;
+};
 
 type ScoreObject = {
-	leftBound: number
-	rightBound: number
-}
+    leftBound: number;
+    rightBound: number;
+};
 
 export const Votings = () => {
-	const [voting, setVoting] = useState<VotingObject>(
-		{
-			title: 'Voting',
-			upvotes: 0,
-			downvotes: 0,
-		},
-		{
-			key: 'votings',
-			scope: Scopes.Global,
-		}
-	)
-	const [score, setScore] = useState<ScoreObject>(
-		{
-			leftBound: 0,
-			rightBound: 0,
-		},
-		{
-			key: 'score',
-			scope: Scopes.Global,
-		}
-	)
+    const [voting, setVoting] = useState<VotingObject>(
+        {
+            title: 'Voting',
+            upvotes: 0,
+            downvotes: 0,
+        },
+        {
+            key: 'votings',
+            scope: Scopes.Global,
+        }
+    );
+    const [score, setScore] = useState<ScoreObject>(
+        {
+            leftBound: 0,
+            rightBound: 0,
+        },
+        {
+            key: 'score',
+            scope: Scopes.Global,
+        }
+    );
 
-	const upvote = () => {
-		setVoting({ ...voting, upvotes: voting.upvotes + 1 })
-	}
+    const wilsonScoreInterval = () => {
+        const { upvotes, downvotes } = voting;
+        const n = upvotes + downvotes;
+        if (n === 0) return 0; // no votes yet
 
-	const downvote = () => {
-		setVoting({ ...voting, downvotes: voting.downvotes + 1 })
-	}
+        const z = 1.96; // 95% probability
+        const phat = (1 * upvotes) / n;
+        const left = phat + (z * z) / (2 * n);
+        const right =
+            z * Math.sqrt((phat * (1 - phat) + (z * z) / (4 * n)) / n);
+        const leftBoundary = (left - right) / (1 + (z * z) / n);
+        const rightBoundary = (left + right) / (1 + (z * z) / n);
+        setScore({ leftBound: leftBoundary, rightBound: rightBoundary });
+    };
 
-	const wilsonScoreInterval = () => {
-		const { upvotes, downvotes } = voting
-		const n = upvotes + downvotes
-		if (n === 0) return 0 // no votes yet
+    const upvote = () => {
+        const newVoting = { ...voting, upvotes: voting.upvotes + 1 };
+        setVoting(newVoting);
+        wilsonScoreInterval();
+    };
 
-		const z = 1.96 // 95% probability
-		const phat = (1 * upvotes) / n
-		const left = phat + (z * z) / (2 * n)
-		const right = z * Math.sqrt((phat * (1 - phat) + (z * z) / (4 * n)) / n)
-		const leftBoundary = (left - right) / (1 + (z * z) / n)
-		const rightBoundary = (left + right) / (1 + (z * z) / n)
-		setScore({ leftBound: leftBoundary, rightBound: rightBoundary })
-	}
+    const downvote = () => {
+        const newVoting = { ...voting, downvotes: voting.downvotes + 1 };
+        setVoting(newVoting);
+        wilsonScoreInterval();
+    };
 
-	return (
-		<ServerSideProps key={`votings-props`} {...voting} upvote={upvote} downvote={downvote} score={score} wilsonScoreInterval={wilsonScoreInterval} />
-	)
-}
+    return (
+        <ServerSideProps
+            key={`votings-props`}
+            {...voting}
+            upvote={upvote}
+            downvote={downvote}
+            score={score}
+            wilsonScoreInterval={wilsonScoreInterval}
+        />
+    );
+};
+
 ```
 
 Now you need to reference the component in your server.
@@ -113,57 +126,66 @@ The client side is straightforward. We're using material ui, so make sure you ha
 
 Create a new file under the following path and paste the contents.
 
-_frontend/src/server-components/VotingApp.tsx_
+_frontend/src/server-components/examples/VotingApp.tsx_
 
 ```tsx
-import ThumbDownIcon from '@mui/icons-material/ThumbDown'
-import ThumbUpIcon from '@mui/icons-material/ThumbUp'
-import { Alert, Box, Button, Typography } from '@mui/material'
-import { useComponent } from '@state-less/react-client'
-import { useEffect } from 'react'
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import { Alert, Box, Button, Typography } from '@mui/material';
+import { useComponent } from '@state-less/react-client';
 
 export const VotingApp = () => {
-	const [component, { loading, error }] = useComponent('votings', {})
+  const [component, { loading, error }] = useComponent('votings', {});
 
-	// we need to call wilsonScoreInterval() every time the upvotes or downvotes change
-	useEffect(() => {
-		if ((component?.props?.upvotes || component?.props?.downvotes) > 0) {
-			component?.props.wilsonScoreInterval()
-		}
-	}, [component?.props?.upvotes, component?.props?.downvotes])
+  if (loading) return <div>Loading...</div>;
 
-	if (loading) return <div>Loading...</div>
+  return (
+    <>
+      <Typography variant="h4" align="center" sx={{ my: 2 }} gutterBottom>
+        Voting App
+      </Typography>
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent={'center'}
+        flexDirection={'row'}
+        sx={{ my: 2 }}
+      >
+        {error && <Alert severity="error">{error.message}</Alert>}
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => component?.props.upvote()}
+          startIcon={<ThumbUpIcon />}
+        >
+          Upvotes ({component?.props?.upvotes})
+        </Button>
+        <Typography variant="h5" align="center" sx={{ mx: 2 }}>
+          {component?.props?.title}
+        </Typography>
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={() => component?.props.downvote()}
+          endIcon={<ThumbDownIcon />}
+        >
+          Downvotes ({component?.props?.downvotes})
+        </Button>
+      </Box>
 
-	return (
-		<>
-			<Typography variant='h4' align='center' sx={{ my: 2 }} gutterBottom>
-				Voting App
-			</Typography>
-			<Box display='flex' alignItems='center' justifyContent={'center'} flexDirection={'row'} sx={{ my: 2 }}>
-				{error && <Alert severity='error'>{error.message}</Alert>}
-				<Button variant='contained' color='primary' onClick={() => component?.props.upvote()} startIcon={<ThumbUpIcon />}>
-					Upvotes ({component?.props?.upvotes})
-				</Button>
-				<Typography variant='h5' align='center' sx={{ mx: 2 }}>
-					{component?.props?.title}
-				</Typography>
-				<Button variant='contained' color='secondary' onClick={() => component?.props.downvote()} endIcon={<ThumbDownIcon />}>
-					Downvotes ({component?.props?.downvotes})
-				</Button>
-			</Box>
+      <Box display="block" alignItems="center" columnGap={4}>
+        <Typography variant="h6" align="center" sx={{ mx: 2 }}>
+          Left Bound: {component?.props?.score?.leftBound.toFixed(2)}
+        </Typography>
 
-			<Box display='block' alignItems='center' columnGap={4}>
-				<Typography variant='h6' align='center' sx={{ mx: 2 }}>
-					Left Bound: {component?.props?.score?.leftBound.toFixed(2)}
-				</Typography>
+        <Typography variant="h6" align="center" sx={{ mx: 2 }}>
+          Right Bound: {component?.props?.score?.rightBound.toFixed(2)}
+        </Typography>
+      </Box>
+    </>
+  );
+};
 
-				<Typography variant='h6' align='center' sx={{ mx: 2 }}>
-					Right Bound: {component?.props?.score?.rightBound.toFixed(2)}
-				</Typography>
-			</Box>
-		</>
-	)
-}
 ```
 
 Once you created the file you can render the Voting component anywhere in your app

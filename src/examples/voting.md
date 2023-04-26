@@ -29,70 +29,96 @@ Create the following new files under their respective paths and paste the conten
 _backend/src/components/Votings.tsx_
 
 ```tsx
-import { Scopes, useState } from '@state-less/react-server'
-import { ServerSideProps } from './ServerSideProps'
+import { Scopes, useState } from '@state-less/react-server';
+import { ServerSideProps } from './ServerSideProps';
 
 type VotingObject = {
-	title: string
-	upvotes: number
-	downvotes: number
-	key?: string
-}
+    title: string;
+    upvotes: number;
+    downvotes: number;
+    key?: string;
+};
 
 type ScoreObject = {
-	leftBound: number
-	rightBound: number
-}
+    upvote: number;
+    downvote: number;
+};
 
-export const Votings = () => {
-	const [voting, setVoting] = useState<VotingObject>(
-		{
-			title: 'Voting',
-			upvotes: 0,
-			downvotes: 0,
-		},
-		{
-			key: 'votings',
-			scope: Scopes.Global,
-		}
-	)
-	const [score, setScore] = useState<ScoreObject>(
-		{
-			leftBound: 0,
-			rightBound: 0,
-		},
-		{
-			key: 'score',
-			scope: Scopes.Global,
-		}
-	)
+export const Votings = ({ scope = Scopes.Global }: { scope?: Scopes }) => {
+    const [voting, setVoting] = useState<VotingObject>(
+        {
+            title: 'Voting',
+            upvotes: 0,
+            downvotes: 0,
+        },
+        {
+            key: 'votings',
+            scope,
+        }
+    );
+    const [score, setScore] = useState<ScoreObject>(
+        {
+            upvote: 0,
+            downvote: 0,
+        },
+        {
+            key: 'score',
+            scope,
+        }
+    );
 
-	const upvote = () => {
-		setVoting({ ...voting, upvotes: voting.upvotes + 1 })
-	}
+    /* *
+     * We use the wilson score to compute two bounds. One for the upvote proportion and one for the downvote proportion.
+     * */
+    const wilsonScoreInterval = (n, votes) => {
+        if (n === 0) return 0; // no votes yet
 
-	const downvote = () => {
-		setVoting({ ...voting, downvotes: voting.downvotes + 1 })
-	}
+        const z = 1.96; // 95% probability
+        const phat = (1 * votes) / n;
+        const left = phat + (z * z) / (2 * n);
+        const right =
+            z * Math.sqrt((phat * (1 - phat) + (z * z) / (4 * n)) / n);
+        const leftBoundary = (left - right) / (1 + (z * z) / n);
 
-	const wilsonScoreInterval = () => {
-		const { upvotes, downvotes } = voting
-		const n = upvotes + downvotes
-		if (n === 0) return 0 // no votes yet
+        // We don't need the upper boundary of the score.
+        // const rightBoundary = (left + right) / (1 + (z * z) / n);
 
-		const z = 1.96 // 95% probability
-		const phat = (1 * upvotes) / n
-		const left = phat + (z * z) / (2 * n)
-		const right = z * Math.sqrt((phat * (1 - phat) + (z * z) / (4 * n)) / n)
-		const leftBoundary = (left - right) / (1 + (z * z) / n)
-		const rightBoundary = (left + right) / (1 + (z * z) / n)
-		setScore({ leftBound: leftBoundary, rightBound: rightBoundary })
-	}
+        return leftBoundary;
+    };
 
-	return (
-		<ServerSideProps key={`votings-props`} {...voting} upvote={upvote} downvote={downvote} score={score} wilsonScoreInterval={wilsonScoreInterval} />
-	)
-}
+    const storeWilsonScore = (newVoting) => {
+        // We need to pass newVoting because variable in the scope will have an outdated value.
+        const { upvotes, downvotes } = newVoting;
+        const upvoteScore = wilsonScoreInterval(upvotes + downvotes, upvotes);
+        const downvoteScore = wilsonScoreInterval(
+            upvotes + downvotes,
+            downvotes
+        );
+        setScore({ upvote: upvoteScore, downvote: downvoteScore });
+    };
+
+    const upvote = () => {
+        const newVoting = { ...voting, upvotes: voting.upvotes + 1 };
+        setVoting(newVoting);
+        storeWilsonScore(newVoting);
+    };
+
+    const downvote = () => {
+        const newVoting = { ...voting, downvotes: voting.downvotes + 1 };
+        setVoting(newVoting);
+        storeWilsonScore(newVoting);
+    };
+
+    return (
+        <ServerSideProps
+            key="votings-props"
+            {...voting}
+            upvote={upvote}
+            downvote={downvote}
+            score={score}
+        />
+    );
+};
 ```
 
 Now you need to reference the component in your server.
@@ -116,54 +142,69 @@ Create a new file under the following path and paste the contents.
 _frontend/src/server-components/VotingApp.tsx_
 
 ```tsx
-import ThumbDownIcon from '@mui/icons-material/ThumbDown'
-import ThumbUpIcon from '@mui/icons-material/ThumbUp'
-import { Alert, Box, Button, Typography } from '@mui/material'
-import { useComponent } from '@state-less/react-client'
-import { useEffect } from 'react'
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import { Alert, Box, Button, Typography } from '@mui/material';
+import { useComponent } from '@state-less/react-client';
 
 export const VotingApp = () => {
-	const [component, { loading, error }] = useComponent('votings', {})
+  const [component, { loading, error }] = useComponent('votings', {});
 
-	// we need to call wilsonScoreInterval() every time the upvotes or downvotes change
-	useEffect(() => {
-		if ((component?.props?.upvotes || component?.props?.downvotes) > 0) {
-			component?.props.wilsonScoreInterval()
-		}
-	}, [component?.props?.upvotes, component?.props?.downvotes])
+  if (loading) return <div>Loading...</div>;
 
-	if (loading) return <div>Loading...</div>
+  return (
+    <>
+      {error && <Alert severity="error">{error.message}</Alert>}
+      <Typography variant="h4" align="center" sx={{ my: 2 }} gutterBottom>
+        Voting App
+      </Typography>
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent={'center'}
+        flexDirection={'row'}
+        sx={{ my: 2 }}
+      >
+        <Button
+          variant="contained"
+          color="success"
+          onClick={() => component?.props.upvote()}
+          startIcon={<ThumbUpIcon />}
+        >
+          {component?.props?.upvotes || 0}
+        </Button>
+        <Typography variant="h5" align="center" sx={{ mx: 2 }}>
+          {Math.round(
+            (component?.props?.upvotes || 0) *
+              (component?.props?.score?.upvote || 0)
+          ) -
+            Math.round(
+              (component?.props?.downvotes || 0) *
+                (component?.props?.score?.downvote || 0)
+            )}
+        </Typography>
+        <Button
+          variant="contained"
+          color="error"
+          onClick={() => component?.props.downvote()}
+          endIcon={<ThumbDownIcon />}
+        >
+          {component?.props?.downvotes || 0}
+        </Button>
+      </Box>
 
-	return (
-		<>
-			<Typography variant='h4' align='center' sx={{ my: 2 }} gutterBottom>
-				Voting App
-			</Typography>
-			<Box display='flex' alignItems='center' justifyContent={'center'} flexDirection={'row'} sx={{ my: 2 }}>
-				{error && <Alert severity='error'>{error.message}</Alert>}
-				<Button variant='contained' color='primary' onClick={() => component?.props.upvote()} startIcon={<ThumbUpIcon />}>
-					Upvotes ({component?.props?.upvotes})
-				</Button>
-				<Typography variant='h5' align='center' sx={{ mx: 2 }}>
-					{component?.props?.title}
-				</Typography>
-				<Button variant='contained' color='secondary' onClick={() => component?.props.downvote()} endIcon={<ThumbDownIcon />}>
-					Downvotes ({component?.props?.downvotes})
-				</Button>
-			</Box>
+      <Box display="block" alignItems="center" columnGap={4}>
+        <Typography variant="h6" align="center" sx={{ mx: 2 }}>
+          Upvote Bound: {component?.props?.score?.upvote.toFixed(2)}
+        </Typography>
 
-			<Box display='block' alignItems='center' columnGap={4}>
-				<Typography variant='h6' align='center' sx={{ mx: 2 }}>
-					Left Bound: {component?.props?.score?.leftBound.toFixed(2)}
-				</Typography>
-
-				<Typography variant='h6' align='center' sx={{ mx: 2 }}>
-					Right Bound: {component?.props?.score?.rightBound.toFixed(2)}
-				</Typography>
-			</Box>
-		</>
-	)
-}
+        <Typography variant="h6" align="center" sx={{ mx: 2 }}>
+          Downvote Bound: {component?.props?.score?.downvote.toFixed(2)}
+        </Typography>
+      </Box>
+    </>
+  );
+};
 ```
 
 Once you created the file you can render the Voting component anywhere in your app

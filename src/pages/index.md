@@ -19,3 +19,9 @@ React Server's built-in support for server-side rendering improves your app's pe
 Finally, React Server offers a great developer experience, with hot reloading, code splitting, and other modern development tools. This makes it easy to iterate and test your app quickly, without worrying about configuration and setup. With React Server, you can focus on building great user experiences without getting bogged down in technical details.
 
 _\*NYI - Not yet implemented_
+
+```tsx
+const server = <Server>
+    // your components here
+</Server>;
+```

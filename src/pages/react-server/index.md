@@ -60,8 +60,6 @@ export const Comment = (props: CommentProps, { key }) => {
 | ----------------------------------------------------------- | ------------------------------------------------------------------ |
 | destroy(component?: ReactServerComponent\<unknown\>) | Destroys a component and all its states. |
 
-
-<a name="createContext"></a>
 ## createContext
 The `createContext` function allows you to create a context that can render a `Provider` which passes values down to child components where they can be consumed using the `useContext` hook.
 

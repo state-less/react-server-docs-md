@@ -56,4 +56,4 @@ Remember that hooks provided by React Server are specifically designed for serve
 | Signature                                                    | Description                                                        |
 | ----------------------------------------------------------- | ------------------------------------------------------------------ |
 | useContext(context: ReactServerContext) | Consumes a provided context. |
-| context: ReactServerContext | The context that has been created with [`createContext`](/react-server). It must provide a `<context.Provider>` higher up in the tree |
+| context: ReactServerContext | The context that has been created with [`createContext`](/react-server#createcontext). It must provide a `<context.Provider>` higher up in the tree |

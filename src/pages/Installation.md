@@ -9,7 +9,7 @@ Note, that using node v14 or below will throw an error. This will be fixed in a 
 ### Get a Server running
 
 ```bash
-git clone https://github.com/state-less/clean-starter.git -b react-server my-server
+git clone https://github.com/state-less/clean-starter.git my-server
 cd my-server
 git remote remove origin
 yarn install

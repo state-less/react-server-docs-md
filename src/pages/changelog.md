@@ -16,5 +16,5 @@
 #### Features 
 * Added reactivity across clients.
 
-### Fixes
+#### Fixes
 * Changing a state properly rerenders the component in the context of each connected client, ensuring multi client realtime state updates.

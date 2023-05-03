@@ -24,7 +24,7 @@ Create a new vite project and choose _React_ as framework and _TypeScript_ as va
 yarn create vite my-frontend
 ```
 
-Now go to the newly created folder, install the dependencies and add `@apollo/client` and `state-less/react-client` to your project and start the server.
+Now go to the newly created folder, install the dependencies and add `@apollo/client` and `@state-less/react-client` to your project and start the server.
 
 ```bash
 cd my-frontend

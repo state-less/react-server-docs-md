@@ -1,4 +1,5 @@
-### v2.0.15
+### v2.0.15 
+*04.05.2023*
 
 #### Features 
 * Added `destroy` function to cleanup dynamic components.

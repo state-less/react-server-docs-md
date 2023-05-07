@@ -2,11 +2,11 @@
 
 TLDR;
 
-- Built with GraphQL and TypeScript for robustness and type safety
-- Component-driven development for modularity and reusability
-- Seamless isomorphic experience with React components as a unified interface
-- [Server-side rendering](/SSR) for fast and efficient page loads
-- ~~Vertical scaling support for scalability and performance.~~ (NYI)
+- React on the backend 🙌
+- Components ❤
+- GraphQL and TypeScript 😍
+- [Server-side rendering](/SSR) 😎
+- ~~Vertical scaling support for scalability and performance.~~ 🚀 (NYI)
 
 
 React Server streamlines development by enabling seamless integration of server and client-side React components. This facilitates building server-rendered components that transfer to the client-side for further rendering and interaction, ensuring a smooth user experience.

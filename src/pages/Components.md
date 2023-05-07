@@ -20,7 +20,7 @@ In summary, server-side components enable developers to build reusable component
 
 ## Lifecycle
 
-\`\`\`mermaid
+```mermaid
 sequenceDiagram
 participant Browser as Browser
 participant Server as Server
@@ -43,7 +43,7 @@ RSC->>SSP: Update serverSideProps if needed
 RSC->>Server: Return updated serverSideProps and rendered component (if updated)
 Server->>Browser: Send updated serverSideProps and rendered component (if updated)
 Browser->>Browser: Update component with new serverSideProps (if needed)
-\`\`\`         
+```         
 ### Creation
 
 Components are created by rendering them using TSX `<Component prop="value" />`. Once a component is created nothing much happens. The magic begins when you render the component on the server using the `render` method of `@state-less/react-server`. Rendering a component allows you to make use of **hooks** such as `useState` and `useEffect`.

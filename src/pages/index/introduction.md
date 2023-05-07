@@ -1,7 +1,5 @@
 # React Server
 
-## Introduction
-
 Are you looking to build modular, scalable backends with ease? Discover the power of React Server, a revolutionary approach to backend development that enables you to craft reusable server-side components as the cornerstone of your entire backend.
 
 React Server simplifies the data loading process by allowing you to consume components using GraphQl instead of relying on traditional REST APIs. It allows you to write fully server authoritative realtime applications. It's a stateless system<sup>(\*)</sup>, making scaling and maintaining your backend infrastructure a breeze.

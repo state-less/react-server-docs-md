@@ -3,11 +3,10 @@
 TLDR;
 
 - React on the backend 🙌
-- Components ❤
+- Components ❤️
 - GraphQL and TypeScript 😍
 - [Server-side rendering](/SSR) 😎
-- ~~Vertical scaling support for scalability and performance.~~ 🚀 (NYI)
-
+- ~~Vertical scaling.~~ 🚀 (NYI*)
 
 React Server streamlines development by enabling seamless integration of server and client-side React components. This facilitates building server-rendered components that transfer to the client-side for further rendering and interaction, ensuring a smooth user experience.
 
@@ -20,34 +19,33 @@ React Server also offers an excellent developer experience with features like ho
 _\*NYI - Not yet implemented_
 
 Discover component driven backend development and leverage the power of TypeScript and JSX to build your own ecosystem of components.
+
 ```tsx
-const server = <Server>
-    // your components here
-</Server>;
+const server = <Server>// your components here</Server>;
 ```
 
 Creating your own components is straight forward. This is the code that powers the button below.
+
 ```tsx
 export const HelloWorldExample2 = () => {
-    // The useState hook looks familiar?
-    const [count, setState] = useState(0, {
-        key: 'count',
-        scope: Scopes.Global,
-    });
+  // The useState hook looks familiar?
+  const [count, setState] = useState(0, {
+    key: "count",
+    scope: Scopes.Global,
+  });
 
-    // A simple function that can be executed from the client side.
-    const increase = () => {
-        setState(count + 1);
-    };
+  // A simple function that can be executed from the client side.
+  const increase = () => {
+    setState(count + 1);
+  };
 
-
-    return (
-        // Simply pass down props to the client side.
-        <ServerSideProps
-            key="hello-world-2-props"
-            count={count}
-            increase={increase}
-        />
-    );
+  return (
+    // Simply pass down props to the client side.
+    <ServerSideProps
+      key="hello-world-2-props"
+      count={count}
+      increase={increase}
+    />
+  );
 };
 ```

@@ -6,7 +6,7 @@ TLDR;
 - Components ❤️
 - GraphQL and TypeScript 😍
 - [Server-side rendering](/SSR) 😎
-- ~~Vertical scaling.~~ 🚀 (NYI*)
+- ~~Vertical scaling.~~ 🚀 (NYI\*)
 
 React Server streamlines development by enabling seamless integration of server and client-side React components. This facilitates building server-rendered components that transfer to the client-side for further rendering and interaction, ensuring a smooth user experience.
 
@@ -21,7 +21,7 @@ _\*NYI - Not yet implemented_
 Discover component driven backend development and leverage the power of TypeScript and JSX to build your own ecosystem of components.
 
 ```tsx
-const server = <Server>// your components here</Server>;
+const server = <Server>{/* your components here */}</Server>;
 ```
 
 Creating your own components is straight forward. This is the code that powers the button below.

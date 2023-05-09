@@ -21,7 +21,7 @@ _\*NYI - Not yet implemented_
 Discover component driven backend development and leverage the power of TypeScript and JSX to build your own ecosystem of components.
 
 ```tsx
-const server = <Server>{/* your components here */}</Server>; 
+const server = <Server>{/* your components here */}</Server>;
 ```
 
 Creating your own components is straight forward. This is the code that powers the button below.

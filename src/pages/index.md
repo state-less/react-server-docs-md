@@ -1,27 +1,25 @@
 ## Why React Server?
 
-TLDR;
+React Server is a state management solution for web applications that offers several key benefits, including:
 
-- React on the backend 🙌
-- Components ❤️
-- GraphQL and TypeScript 😍
-- [Server-side rendering](/SSR) 😎
-- ~~Vertical scaling.~~ 🚀 (NYI\*)
+* **Server-side rendering**: React Server can render your application on the server, which can improve performance and SEO.
+* **Real-time updates**: React Server can update your application in real time, which can improve the user experience.
+* **Scalability**: React Server is designed to be scalable, so you can easily handle large numbers of users.
+* **Simplicity**: React Server is easy to use, even for developers who are new to React.
 
-React Server streamlines development by enabling seamless integration of server and client-side React components. This facilitates building server-rendered components that transfer to the client-side for further rendering and interaction, ensuring a smooth user experience.
 
-Leveraging GraphQL and TypeScript, React Server promotes reliable, maintainable, and scalable code. GraphQL simplifies data query and mutation management, while TypeScript's static typing enhances error detection and code readability.
+React Server streamlines development by enabling seamless integration of server and client-side React components. This facilitates building server-rendered components that transfer to the client-side for further interaction, ensuring a smooth and **realtime** user experience.
 
-The component-driven approach of React Server fosters rapid development of reusable components, promoting consistent design language and reduced duplication. Additionally, server-side rendering support enhances app performance and SEO through reduced client-side rendering reliance, improving load times and search rankings.
+Leveraging *GraphQL and TypeScript*, React Server promotes **reliable, maintainable, and scalable code**. GraphQL simplifies data query and mutation management, while TypeScript's static typing enhances error detection and code readability.
 
-React Server also offers an excellent developer experience with features like hot reloading and code splitting, allowing for rapid iteration and testing without configuration hassles. Focus on crafting exceptional user experiences with React Server, unencumbered by technical minutiae.
+The **component-driven** approach of React Server fosters rapid development of reusable components, promoting consistent design language and reduced duplication. Additionally, **server-side rendering** support enhances app performance and SEO through reduced client-side rendering reliance, improving load times and search rankings.
 
-_\*NYI - Not yet implemented_
-
-Discover component driven backend development and leverage the power of TypeScript and JSX to build your own ecosystem of components.
+Discover component driven backend development and leverage the power of TypeScript and JSX to build **your own ecosystem** of reusable components.
 
 ```tsx
-const server = <Server>{/* your components here */}</Server>; 
+const server = <Server>
+  {/* your components here */}
+</Server>; 
 ```
 
 Creating your own components is straight forward. This is the code that powers the button below.

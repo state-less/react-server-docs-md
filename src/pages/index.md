@@ -1,14 +1,19 @@
 ## Why React Server?
 
-React Server is a state management solution for web applications that offers several key benefits, including:
+It's a fullstack framework with a serverside and a clientside library that makes it straight forward to use the familiar syntax of React to build your backend code as components in a way that makes it easy to transfer any serverside state to the client as TSX props. 
 
-* **Server-side rendering**: React Server can render your application on the server, which can improve performance and SEO.
+It's a fun and intuitive way to build and rapidly prototype sophisticated services with minimal effort. 
+
+React Server is a fullstack solution for web applications that offers several key benefits, including:
+
+* **Components**: React Server fosters a component driven architecture, which proved a successful pattern for clean and scalable code.
+* **Server-side rendering**: React Server can render your application on the server using Next.js, which can improve performance and SEO.
 * **Real-time updates**: React Server can update your application in real time, which can improve the user experience.
 * **Scalability**: React Server is designed to be scalable, so you can easily handle large numbers of users.
-* **Simplicity**: React Server is easy to use, even for developers who are new to React.
+* **Simplicity**: React Server is familiar to React and is easy to use, even for developers who are new to React.
 
 
-React Server streamlines development by enabling seamless integration of server and client-side React components. This facilitates building server-rendered components that transfer to the client-side for further interaction, ensuring a smooth and **realtime** user experience.
+React Server streamlines development by enabling seamless integration of server and client. This facilitates building server-rendered components that transfer to the client-side for further interaction, ensuring a smooth and **realtime** user experience.
 
 Leveraging *GraphQL and TypeScript*, React Server promotes **reliable, maintainable, and scalable code**. GraphQL simplifies data query and mutation management, while TypeScript's static typing enhances error detection and code readability.
 

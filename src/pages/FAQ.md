@@ -5,7 +5,7 @@ Here are answers to questions you might have, as well as frequently asked questi
 
 > Is there a recommended way to handle authentication and authorization in React Server?
   
-Authentication and Authorization will be implemented before release until then there is no best practice to handle authentication.
+Authentication and Authorization is currently seamless with Google Oauth. Read more about [authentication](/authentication).
 
 > How can I create custom scopes for managing state, and are there any best practices for doing so?
   

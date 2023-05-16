@@ -21,7 +21,7 @@ There is currently no implementation for server side rendering. You can render R
 
 > Are there any performance considerations or limitations when using React Server, especially when dealing with a large number of users and components?
 
-The architecture has only been tested in small to medium projects where it performed well. So there's currently no limit to performance.
+The architecture has only been tested in small to medium projects where it performed well. So there's currently no known limit to performance.
 
 > How do you handle error boundaries and fallback UIs when a component fails to render or encounters an error?
 

@@ -12,6 +12,10 @@ React Server is a fullstack solution for web applications that offers several ke
 * **Scalability**: React Server is designed to be scalable, so you can easily handle large numbers of users.
 * **Simplicity**: React Server is familiar to React and is easy to use, even for developers who are new to React.
 
+### Next.js
+React Server is not a replacement for [Next.js](/faq). You can combine it, to have realtime server authoritative fullstack apps with SSR for better SEO.
+
+### React Server
 
 React Server streamlines development by enabling seamless integration of server and client. This facilitates building server-rendered components that transfer to the client-side for further interaction, ensuring a smooth and **realtime** user experience.
 

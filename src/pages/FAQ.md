@@ -2,6 +2,9 @@
 
 Here are answers to questions you might have, as well as frequently asked questions.  
 
+> How does it compare to Next.js?
+
+React Server is not a replacement for Next.js, you can use Next.js together with React Server when you need SSR. Next.js allows you to do Server Side Rendering by using additional hooks. React Server on the other hand allows you to build components that have their own independent lifecycle on the server side. React Server allows you to use familiar paradigms and a reactive pattern you know from the frontend on the server side.
 
 > Is there a recommended way to handle authentication and authorization in React Server?
   

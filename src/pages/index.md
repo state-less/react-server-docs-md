@@ -2,7 +2,7 @@
 
 React Server aims to adapt proven concepts of the frontend world to the backend. By introduing React's coding paradigms such as hooks, providers, and components to the backend, it allows you to rethink your backend architecture and pursue a component driven approach with all the benefits it brings. 
 
-A component driven and reactive architecture allows you to build an ecosystem of **reusable** components. It allows you to utilize a unified interface in the form of React components. 
+A **component driven** and *reactive* architecture allows you to build an ecosystem of **reusable** components. It allows you to utilize a unified interface in the form of React components. 
 
 By aligning the component and data structure of your backend and frontend you can simplify data transportation, reactivity, prerendering. You could mitigate the waterfall problem by mirroring the component structure on the backend providing pre computed data matching the frontend structure which can be passed down to the client in a single API call.
 

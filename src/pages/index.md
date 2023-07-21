@@ -1,16 +1,21 @@
 ## Why React Server?
 
-It's a fullstack framework with a serverside and a clientside library that makes it straight forward to use the familiar syntax of React to build your backend code as components in a way that makes it easy to transfer any serverside state to the client as TSX props. 
+React Server aims to adapt proven concepts of the frontend world to the backend. By introduing React's coding paradigms such as hooks, providers, and components to the backend, it allows you to rethink your backend architecture and pursue a component driven approach with all the benefits it brings. 
 
-It's a fun and intuitive way to build and rapidly prototype sophisticated services with minimal effort. 
+A component driven and reactive architecture allows you to build an ecosystem of **reusable** components. It allows you to utilize a unified interface in the form of React components. 
 
-React Server is a fullstack solution for web applications that offers several key benefits, including:
+By aligning the component and data structure of your backend and frontend you can simplify data transportation, reactivity, prerendering. You could mitigate the waterfall problem by mirroring the component structure on the backend providing pre computed data matching the frontend structure which can be passed down to the client in a single API call.
 
-* **Components**: React Server fosters a component driven architecture, which proved a successful pattern for clean and scalable code.
-* **Server-side rendering**: React Server can render your application on the server using Next.js, which can improve performance and SEO.
-* **Real-time updates**: React Server can update your application in real time, which can improve the user experience.
-* **Scalability**: React Server is designed to be scalable, so you can easily handle large numbers of users.
-* **Simplicity**: React Server is familiar to React and is easy to use, even for developers who are new to React.
+React provides means of maintaining a high quality code base with a beautiful architecture. With React on the frontend you usually end up with a clean, readable and maintainable code base.
+
+By using the same techniques on the backend you can unify your development experience and build self suistained reusable packages that contain backend and frontend logic. 
+This could help the community to build a rich ecosystem of selfcontained buisiness logic for the server side, ready to be plugged into your running React Server. 
+
+TSX and hooks have proven to be successful and I think what worked on the frontend might also work on the backend.
+
+On a personal note, it's really easy and straightforward to develope with React Server if you already know React. 
+
+You can spin up full-stack applications in no time and you only need one server to host a multitude of services. 
 
 ### Next.js
 React Server is not a replacement for [Next.js](/faq). You can combine it, to have realtime server authoritative fullstack apps with SSR for better SEO.

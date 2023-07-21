@@ -1,12 +1,13 @@
-# Build scalable, modular backends with React Server
+# Build scalable, modular and reactive web applications with React Server
 
-React Server is a revolutionary approach to backend development that makes it easy to build scalable, modular backends. With React Server, you can:
+React Server is a full-stack framework that allows you to rapidly prototype modern web applications. 
 
-* Craft *reusable server-side components* that can be used to build any type of backend application.
-* Consume components using *GraphQL* APIs, making it easy to build *real-time* applications.
-* Write stateless* backends that are easy to scale and maintain. (NYI**)
-* Unlock the potential of an extensive ecosystem of reusable backend components.
+* With TSX on the Serverside, you can adapt Reacts component driven appraoch to build reactive backend services.
+* It's built with GraphQl to provide a reliable transport and modern API interface. 
+* React Server uses pub / sub to provide realtime state updates which keeps all your clients in sync.
+* Once implemented, React Server can run on a state-less infrastructure like AWS Lambda by externalizing states into a database.
+* Build your own ecosystem of reusable backend components that can be dropped into any React Server instance. 
 
 **Try React Server today and see how it can transform the way you build web applications.**
 
-<sup>* Once [externalization of states](/faq#stateless) into databases has been implemented. ** Not yet implemented
+<sup>* Not yet implemented </sup>

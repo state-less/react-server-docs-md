@@ -1,11 +1,14 @@
 ## Installation
+
 ### Prerequisites
+
 Before we begin, ensure that you have the following installed on your local machine:
 
 Node.js (**version 16** or higher)  
 npm (version 8 or higher)
 
 Note, that using node v14 or below will throw an error. This will be fixed in a future release, but for now you have to use node v16 or higher.
+
 ### Get a Server running
 
 ```bash
@@ -13,8 +16,12 @@ git clone https://github.com/state-less/clean-starter.git my-server
 cd my-server
 git remote remove origin
 yarn install
+cp .env.template .env
 yarn start
 ```
+
+Don't forget to run `web-push generate-vapid-keys` to generate a new VAPID key for your server.	
+Update your *.env* file accordingly.
 
 ### Get a Client running
 
@@ -101,6 +108,7 @@ const [count, setCount] = useServerState(0, {
   client,
 });
 ```
+
 ### Play around
 
 That's all. Make sure the backend react server **is running** and click the button.

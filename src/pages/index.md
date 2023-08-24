@@ -27,6 +27,9 @@ const server = <Server>
 Creating your own components is straight forward. This is the code that powers the button below.
 
 ```tsx
+import { Scopes, useState, clientKey } from '@state-less/react-server';
+import { ServerSideProps } from './ServerSideProps';
+
 export const HelloWorldExample2 = () => {
   // The useState hook looks familiar?
   const [count, setState] = useState(0, {
@@ -42,7 +45,7 @@ export const HelloWorldExample2 = () => {
   return (
     // Simply pass down props to the client side.
     <ServerSideProps
-      key="hello-world-2-props"
+      key={clientKey(`${key}-props`, context)}
       count={count}
       increase={increase}
     />

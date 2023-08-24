@@ -1,3 +1,5 @@
+### v2.0.28
+We fixed the publish mechanism to only publish when there are changes in the rendered component. This has the side-effect that you now need to set a client specific key using the `clientKey` utility. Otherwise, components will not update on every connected client. We will see if there's a way around using the utility e.g. by automatically appending client side information.
 ### v2.0.15
 <sup>_04.05.2023_</sup>
 

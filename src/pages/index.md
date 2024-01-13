@@ -1,4 +1,4 @@
-## Why React Server?
+## [Why React Server?](/why)
 
 The main benefit of React is to implement and maintain a very clean codebase which can be scaled to very large projects. It's component driven approach naturally imposes a modular architecture which aids decoupling and modularization.
 

@@ -1,3 +1,9 @@
+### v2.0.37 - 24.01.2024
+
+* Fixed additional rerenders.
+* Add serverside rerendering to allow useEffect calls to happen after data has been fetched from the database
+* Bugfixes
+
 ### v2.0.29 - 13.01.2024
 
 * Added PostgreSQL transport to stores.

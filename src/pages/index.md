@@ -32,7 +32,7 @@ React Server is not a replacement for [Next.js](/faq). You can combine it, to ha
   * *states* are externalized to a database.
 * Bridging the gap between server and client
   * seamless transport of serverside *props*. 
-    * seamless *function* invocation. **serverside** functions are callable from the client
+  * seamless *function* invocation. **serverside** functions are callable from the client
 * A component driven abstraction layer over GraphQL
   * consume components instead of arbitrarily shaped data
   * utilizes PubSub for realtime state updates

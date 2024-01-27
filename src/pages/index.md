@@ -16,7 +16,32 @@ If you love React you will also love React Server. Try it now and discover how e
 React Server is not a replacement for [Next.js](/faq). You can combine it, to have realtime server authoritative fullstack apps with SSR for better SEO.
 
 ### React Server
-Components on the server side.
+#### What is React Server?
+* TSX on the backend
+  * React's syntax
+  * declarative
+  * modular
+  * composable
+* Component driven development
+  * modular and declarative fullstack microservices
+  * deliver both, frontend and backend code using components as API
+* Reactive coding style
+  * synchronous *hooks* abstract complex async / await patterns. 
+  * linear semantic flow
+  * lifecycle managed by *effects*
+  * *states* are externalized to a database.
+* Bridging the gap between server and client
+  * seamless transport of serverside *props*. 
+    * seamless *function* invocation. **serverside** functions are callable from the client
+* A component driven abstraction layer over GraphQL
+  * consume components instead of arbitrarily shaped data
+  * utilizes PubSub for realtime state updates
+* A reactive database interface
+* Rapid prototyping
+
+
+
+You probably wonder how components on the server side look like. That's easy. Just as they do on the Frontend. If you're familiar with *React* you should spot the similarities immediately.
 
 ```tsx
 const server = <Server>

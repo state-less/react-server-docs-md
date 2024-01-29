@@ -1,15 +1,27 @@
 ## [Why React Server?](/why)
 
-The main benefit of React is to implement and maintain a very clean codebase which can be scaled to very large projects. It's component driven approach naturally imposes a modular architecture which aids decoupling and modularization.
+The main benefit of React is to write highly maintainable and *reusable*  codebase which can be scaled to very large projects. It's component driven approach naturally imposes a modular architecture which aids decoupling and modularization while the reactive coding style favors readability and a clean architecture.
 
-React has been proven to be an excellent tool in crafting re-usable high quality components. 
+This principle has been proven in the real world by React being a state of the art solution to SPA's being deployed in production ever so often. Based on experience it has been an excellent tool in crafting re-usable high quality components. 
 
-By adapting a successful approach to component driven development from the frontend world, React Server brings the same flexibility and reuseability of the frontend.
+By adapting a successful approach to component driven development from the frontend world, React Server brings the some of the flexibility of reactive programming.
 
-It's component based nature and reactive architecture allows you to enjoy the same developer experience as with React on the frontend. 
-Enjoy the reactivity of `useState` hooks, manage side-effects using the familiar `useEffect` hooks.
+It's component based nature allows you to enjoy promotes developer experience. 
+Enjoy the power of hooks such as  `useState` and manage serverside lifecycle of components using the familiar concept of effects such as `useEffect`.
 
-React Server is declarative. It's a tool that allows you to easily prototype sophisticated server-side logic using a declarative approach powered by TSX. 
+React Server is declarative. It's a tool that allows you to easily prototype sophisticated server-side logic using a declarative approach powered by TSX.
+
+A side effect of using the same lifecycles and component hierarchy is that you get realtime state updates out of the box. If one client mutates the state on the server the component rerenders and publishes the rerendered component to all subscribed clients.
+
+You don't need to worry about data transportation or fetching *at all*. Just render *props* on the server and consume them on the client with a simple `useComponent` hook. 
+
+Did we mention that you can even pass function references and call serverside functions on the frontend as if they were right there? 
+
+React Server *bridges the gap* between server and client in the react world, bringing you a real fullstack experience with a unified interface towards a component driven architecture. 
+
+If you are used to microservices, check out React Server. Components / Services can be plugged into any React Server instance allowing you to reuse your backend code in multiple platforms.
+
+The magic is mostly in behind the  `useState` hook which makes it exceptionally simple to seperate data operations by user. It's as simple as including a unique *user ID* in the `scope` parameter and the same *component* renders a seperate *view* into your data based on the currently logged in user. 
 
 If you love React you will also love React Server. Try it now and discover how easy it is to build modern and reliable fullstack applications.
 ### Next.js

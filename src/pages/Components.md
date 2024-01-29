@@ -43,7 +43,7 @@ Note over Browser, Server: User interacts with component (e.g. button click)
 Browser->>Server: Request execution of server-side function
 Server->>RSC: Execute server-side function
 RSC->>DB: Store updated state in database
-RSC->>SSP: Rerender component if needed
+SSP->>RSC: Rerender component if needed
 RSC->>Browser: Publish rerendered state over websocket
 Browser->>Browser: Update component with new serverSideProps
 ```         

@@ -40,22 +40,20 @@ DB->>RSC: Receive data from database
 RSC->>Browser: Publish updated data to client
 Note over Browser, Server: User interacts with component (e.g. button click)
 
-Browser->>Server: Request execution of server-side function
-Server->>RSC: Execute server-side function
+Browser->>RSC: Execute server-side function
 RSC->>DB: Store updated state in database
 SSP->>RSC: Rerender component if needed
 RSC->>Browser: Publish rerendered state over websocket
 Browser->>Browser: Update component with new serverSideProps
-```         
+```
+
 ### Creation
 
 Components are created by rendering them using TSX `<Component prop="value" />`. Once a component is created nothing much happens. The magic begins when you render the component on the server using the `render` method of `@state-less/react-server`. Rendering a component allows you to make use of **hooks** such as `useState` and `useEffect`.
 
-
-
 ### Rendering
 
-When a server-side component is rendered, it's first executed on the server. The server then renders a  `<ServerSideProps />` component that sends all the props passed to it to the client, making them available in frontend code. Including functions which make server-side components in React a seamless experience for executing server-side code from the client.
+When a server-side component is rendered, it's first executed on the server. The server then renders a `<ServerSideProps />` component that sends all the props passed to it to the client, making them available in frontend code. Including functions which make server-side components in React a seamless experience for executing server-side code from the client.
 
 Once the component is rehydrated on the client, any functions that were passed to it will be mapped to callable functions that execute the function defined in the component on the server-side. This allows any function defined on the server and passed as a prop to be called from the client, enabling the client to modify server-side state by invoking server-side functions.
 
@@ -63,22 +61,21 @@ It's worth noting that server-side components define not only the data but also 
 
 Using this approach, you can write fully server authoritative applications that require little to no client-side logic. While it's possible to write client-side logic, it's not necessary to create a fully server authoritative application.
 
-
-
 ### Destruction
 
-There are occasions where components are being created dynamically, such as mapping an array to components which is very common in React. 
+There are occasions where components are being created dynamically, such as mapping an array to components which is very common in React.
 Rendering components dynamically will lead to dangling states if you don't clean them up.
 
-Suppose you have a comments section like on this page. When an admin deletes a comment, the up and downvotes for the comment are no longer needed. This is something React Server does not automatically take care of. There is no garbage collection mechanism because we can't now when a state might be needed again. So you need to actively delete states once they are no longer needed. 
+Suppose you have a comments section like on this page. When an admin deletes a comment, the up and downvotes for the comment are no longer needed. This is something React Server does not automatically take care of. There is no garbage collection mechanism because we can't now when a state might be needed again. So you need to actively delete states once they are no longer needed.
 
-You don't have to dispose of single states manually, you can destroy a component and it will delete any state that has been created within its context. Destroying a component will delete all states that have been created for any client. 
+You don't have to dispose of single states manually, you can destroy a component and it will delete any state that has been created within its context. Destroying a component will delete all states that have been created for any client.
 
 If you are using an in memory store, the value of the state is lost and can not be recovered.
 
 You can simply call the `destroy` function exposed by `@state-less/react-server` to destroy the current component. Note that you somehow render it again, all states will be recreated with their initial values. Any prior value is lost. Even if the component shares the exact same key.
 
 In summary, server-side components offer a powerful way to create dynamic, interactive web applications. They allow the client to interact with server-side data and logic using React as a seamless isomorphic interface.
+
 ## Usage
 
 To render a serverside component, all you need to do is write a function.
@@ -106,6 +103,7 @@ const server = render(<HelloWorld key="test" />);
 This example demonstrates a simple component that logs "Hello World" to the console when rendered on the server. It showcases the ease of creating a server-side component. Naturally, you can create more sophisticated components that are rendered on the server and subsequently passed to the client for additional manipulation.
 
 ### ServerSideProps
+
 `ServerSideProps` is a utility in React Server that enables you to pass server-side data or functions to client-side components seamlessly. It acts as a wrapper around the server-side component, making it easy to transfer the necessary data and functions to be consumed on the client-side.
 
 To use `ServerSideProps`, you would typically create a server-side component that returns an instance of `ServerSideProps` with the required data and functions as props. These props will be serialized and sent to the client-side component, allowing you to access and use them just as you would with regular React components.
@@ -124,7 +122,9 @@ export const MyServerComponent = () => {
   );
 };
 ```
-This example will pass both the value of the variable state as well as the function to update that state down to the client, where it can be consumed using the `useComponent` hook of *@state-less/react-client*.
+
+This example will pass both the value of the variable state as well as the function to update that state down to the client, where it can be consumed using the `useComponent` hook of _@state-less/react-client_.
+
 ### Manipulating Server State
 
 Typically, you'll want the ability to alter the state of a server-side component from the client-side. This can be achieved by passing a function as a prop to the `ServerSideProps`.
@@ -178,7 +178,7 @@ const HelloWorld = () => {
 ## useComponent
 
 ```tsx
-const [props, {loading, error}] = useComponent(key, options);
+const [props, { loading, error }] = useComponent(key, options);
 ```
 
 _useComponent_
@@ -199,4 +199,4 @@ _UseComponentOptions_
 |--|--|
 |`key?` | The key of the state on the server. If omitted a key is generated on the server.  
 |`scope?` | The scope of the state on the server. If omitted, 'global' is used.
-|`data?`  | Will be hydrated when passed. Passed data is synchronously available and the client will subscribe to further updates omitting the initial fetch.
+|`data?` | Will be hydrated when passed. Passed data is synchronously available and the client will subscribe to further updates omitting the initial fetch.

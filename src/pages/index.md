@@ -23,7 +23,7 @@ If you are used to microservices, check out React Server. Components / services 
 
 ### If you love React you will also love React Server. Try it now and discover how **easy** and **fast** it is to build modern and reliable fullstack applications.
 
-Save real developer time by increasing the speed at which you can deliver mature fullstack services. While being exceptional at rapidly prototyping complex business processes it's also meant as a platform for mature services to grow an ecosystem of opensource components for anyone to enjoy.
+Save real developer time by increasing the speed at which you can deliver mature fullstack services. While being exceptional at rapidly prototyping complex business processes it's also meant as a platform for open source services to provide an ecosystem of components for anyone to enjoy.
 
 ### Next.js
 

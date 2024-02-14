@@ -4,7 +4,7 @@ React Server is a new framework for building reactive fullstack services. It com
 
 It allows you to build serverside components using JSX/TSX which combines declarative components with a reactive lifecycle. A coding style known from the frontend library React. (components, hooks, effects etc.)
 
-- With TSX under the hood, you can adapt Reacts component driven appraoch on the serverside.
+- With TSX under the hood, you can adapt a component driven appraoch on the serverside.
 - GraphQl provides a reliable transport and modern API interface.
 - React Server leverages PubSub for realtime state updates, keeping all your clients in sync.
 - It's inherently modular which makes it easy to grow an ecosystem of reusable components.

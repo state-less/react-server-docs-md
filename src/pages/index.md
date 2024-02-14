@@ -48,27 +48,29 @@ React Server is _not_ a replacement for [Next.js](/faq). You can combine it, to 
 
 - TSX on the backend
   - React's syntax
-  - declarative
-  - modular
-  - composable
+  - Declarative
+  - Modular
+  - Composable
 - Component driven development
-  - modular and declarative fullstack microservices
-  - deliver both, frontend and backend code using components as API
+  - Modular and declarative fullstack microservices
+  - Deliver frontend _and_ backend code
+  - Consume _components_ instead of REST APIs
 - Reactive coding style
-  - synchronous _hooks_ abstract complex async / await patterns.
-  - linear semantic flow
-  - lifecycle managed by _effects_
-  - _states_ are externalized to a database.
+  - Synchronous _hooks_ abstract complex async / await patterns.
+  - Linear semantic flow of data / states
+  - Lifecycle managed by _effects_ and _states_
+  - _States_ are externalized to a relational database.
 - Bridging the gap between server and client
-  - seamless transport of serverside _props_.
-  - seamless _function_ invocation. **serverside** functions are callable from the client
-- A component driven abstraction layer over GraphQL
-  - consume components instead of arbitrarily shaped data
-  - utilizes PubSub for realtime state updates
+  - Render props on the _server_, access them on the _client_.
+  - Seamless _function_ invocation.  
+    **serverside** functions are callable from the client
+- A component based abstraction layer on top of GraphQL
+  - Consume reactive components instead of arbitrarily shaped data
+  - Utilizes PubSub for realtime state updates
 - A reactive database interface
 - Rapid prototyping
 
-You probably wonder how components on the server side look like. That's easy. Just as they do on the Frontend. If you're familiar with _React_ you should spot the similarities immediately.
+You probably wonder how components on the server side look like. That's easy: Just as they do on the Frontend. If you're familiar with _React_ you should immediately notice the similarities.
 
 ```tsx
 const server = <Server>{/* your components here */}</Server>;

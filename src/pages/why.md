@@ -2,7 +2,7 @@
 
 ## Because it's beautiful 🥰
 
-Just like React, it's a new way to code. A _reactive_ approach mitigates so many of the problems JavaScript's asynchronous and event based nature brings with. The beauty is within the simplicity of semantic flow through your application.
+Just like React, it's a new way to code. A _reactive_ approach mitigates so many of the problems JavaScript's asynchronous and event based nature. The beauty lies within the simplicity of semantic flow through your application.
 
 It abstracts complex state interactions and asynchronous operations into a _semantically_ linear (top down) flow of data through your application.
 

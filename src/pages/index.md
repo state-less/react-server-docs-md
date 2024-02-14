@@ -40,7 +40,7 @@ Save real developer time by increasing the speed at which you can deliver mature
 
 ### Next.js
 
-React Server is *not* a replacement for [Next.js](/faq). You can combine it, to have realtime server authoritative fullstack apps with SSR for better SEO.
+React Server is *not* a replacement for [Next.js](/faq). You can combine it, to have realtime server authoritative fullstack apps with [SSR](/SSR).
 
 ### React Server
 

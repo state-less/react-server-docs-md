@@ -13,7 +13,7 @@ It allows you to build serverside components using JSX/TSX which combines declar
 
 ## [Why React Server?](/why)
 
-The main benefit of React is to write highly maintainable and _reusable_ code which can be scaled to large projects. Its component driven approach naturally imposes a modular architecture which aids decoupling and modularization while a reactive coding style promotes readability and a clean architecture.
+One benefit of React is to write maintainable and reusable components which can be scaled to large projects. The declarative nature promotes readability and its component driven approach naturally imposes a modular architecture which in turn aids decoupling and modularization while a reactive lifecycle provides a linear flow of data, enabling a clean architecture.
 
 This principle has been proven in the real world by React being a state of the art solution to SPA's being deployed in production ever so often. Based on experience it has been an excellent tool for crafting re-usable, high quality components.
 
@@ -34,7 +34,7 @@ React Server _bridges the gap_ between server and client in the React world, bri
 
 If you are used to microservices, check out React Server. Components / services can be plugged into any React Server instance allowing you to reuse your backend code in multiple platforms. This means if you develope a service once, you can run it on any server with Node.js.
 
-### If you love React you will also love React Server. Try it now and discover how **easy** and **fast** it is to build modern and reliable fullstack applications.
+### Love React? You will also love React Server. Try it now and discover how **easy** it is to build modern and reliable fullstack applications.
 
 Save real developer time by increasing the speed at which you can deliver mature fullstack services. While being exceptional at rapidly prototyping complex business processes it's also meant as a platform for open source services to provide an ecosystem of components for anyone to enjoy.
 

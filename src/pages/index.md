@@ -34,7 +34,7 @@ React Server _bridges the gap_ between server and client in the React world, bri
 
 If you are used to microservices, check out React Server. Components / services can be plugged into any React Server instance allowing you to reuse your backend code in multiple platforms. This means if you develope a service once, you can run it on any server with Node.js.
 
-### Love React? You will also love React Server. Try it now and discover how **easy** it is to build modern and reliable fullstack applications.
+### Love React? You will also love React Server. Try it now and discover how to easily build modern and reliable fullstack applications.
 
 Save real developer time by increasing the speed at which you can deliver mature fullstack services. While being exceptional at rapidly prototyping complex business processes it's also meant as a platform for open source services to provide an ecosystem of components for anyone to enjoy.
 

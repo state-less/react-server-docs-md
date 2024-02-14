@@ -8,7 +8,7 @@ It abstracts complex state interactions and asynchronous operations into a _sema
 
 It provides readability which in turn makes your code much more maintainable. The goal of every good codebase should be being able to be read like a book.
 
-It's composable and seperates _concerns_ into self contained components. This provides _modularity_ which in turn decreases the complexity of your architecture and naturally favors a _DRY_ coding style by representing a service as collection of states and operations.
+It's composable and seperates concerns into self contained components. This provides modularity which in turn decreases the complexity of your architecture and naturally favors a _DRY_ coding style by representing a service as collection of states and operations.
 
 Following these principles allows you to rapidly prototype complex and sophisticated fullstack services while maintaining a readable and robust codebase.
 

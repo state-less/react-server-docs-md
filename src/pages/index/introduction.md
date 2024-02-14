@@ -1,6 +1,6 @@
 # A component driven, reactive, fullstack framework
 
-React Server is a new framework for building reactive fullstack services. It comes with the familiar syntax of [React](https://react.dev/), our beloved frontend framework.
+React Server is a new framework for building reactive fullstack services. It comes with the familiar syntax of [React](https://react.dev/), a beloved frontend framework.
 
 It allows you to build serverside components using JSX/TSX which combines declarative components with a reactive lifecycle. A coding style known from the frontend library React. (components, hooks, effects etc.)
 

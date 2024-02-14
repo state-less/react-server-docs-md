@@ -9,7 +9,7 @@ It allows you to build serverside components using JSX/TSX which combines declar
 - React Server leverages PubSub for realtime state updates, keeping all your clients in sync.
 - It's inherently modular which makes it easy to grow an ecosystem of reusable components.
 
-**Go ahead and try React Server. It's easy and fast to prototype sopthisticated services with minimal overhead.**
+**Go ahead and try React Server. It's easy to quickly prototype sopthisticated services with minimal overhead.**
 
 ## [Why React Server?](/why)
 

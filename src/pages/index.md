@@ -82,7 +82,7 @@ Creating your own components is straight forward. This is the code that powers t
 import { Scopes, useState, clientKey } from "@state-less/react-server";
 import { ServerSideProps } from "./ServerSideProps";
 
-export const HelloWorldExample2 = (props, { key, context }) => {
+export const HelloWorldExample = (props, { key, context }) => {
   // The useState hook looks familiar?
   const [count, setState] = useState(0, {
     key: "count",

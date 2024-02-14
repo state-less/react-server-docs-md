@@ -9,7 +9,7 @@ It allows you to build serverside components using JSX/TSX which combines declar
 - React Server leverages PubSub for realtime state updates, keeping all your clients in sync.
 - It's inherently modular which makes it easy to grow an ecosystem of reusable components.
 
-**Go ahead and try React Server. It's easy to quickly prototype sopthisticated services with minimal overhead.**
+**Go ahead and try React Server. It's easy to quickly prototype sophisticated fullstack services with minimal overhead.**
 
 ## [Why React Server?](/why)
 
@@ -40,7 +40,7 @@ Save real developer time by increasing the speed at which you can deliver mature
 
 ### Next.js
 
-React Server is *not* a replacement for [Next.js](/faq). You can combine it, to have realtime server authoritative fullstack apps with [SSR](/SSR).
+React Server is _not_ a replacement for [Next.js](/faq). You can combine it, to have realtime server authoritative fullstack apps with [SSR](/SSR).
 
 ### React Server
 

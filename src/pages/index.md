@@ -13,7 +13,7 @@ It allows you to build serverside components using JSX/TSX which combines declar
 
 ## [Why React Server?](/why)
 
-One benefit of React is to write maintainable and reusable components which can be scaled to large projects. The declarative nature promotes readability and its component driven approach naturally imposes a modular architecture which in turn aids decoupling and modularization while a reactive lifecycle provides a linear flow of data, enabling a clean architecture.
+One benefit of React is to write maintainable and reusable components which can be scaled to large projects. The declarative nature promotes readability and its component driven approach naturally imposes a modular architecture and aids decoupling while a reactive lifecycle provides a linear flow of data and enables a clean architecture.
 
 This principle has been proven in the real world by React being a state of the art solution to SPA's being deployed in production ever so often. Based on experience it has been an excellent tool for crafting re-usable, high quality components.
 

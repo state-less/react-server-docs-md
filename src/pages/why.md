@@ -1,65 +1,69 @@
 # Why?
 
-## Because it's beautiful 🥰
+## Because it's beautiful Reactive approach 🥰
 
-Just like React, it's a new way to code. A _reactive_ approach mitigates so many of the problems JavaScript's asynchronous and event based nature. The beauty lies within the simplicity of semantic flow through your application.
+Just like React, React Server revolutionizes coding methodologies, offering a reactive approach that tackles the challenges posed by JavaScript's asynchronous and event-driven nature. Its brilliance lies in the simplicity of semantic flow within your application.
 
-It abstracts complex state interactions and asynchronous operations into a _semantically_ linear (top down) flow of data through your application.
+By abstracting complex state interactions and asynchronous operations into a semantically linear data flow, React Server enhances readability, paving the way for a more maintainable codebase. A hallmark of a well-crafted codebase is its readability, akin to turning the pages of a well-written book.
 
-It provides readability which in turn makes your code much more maintainable. The goal of every good codebase should be being able to be read like a book.
+React Server promotes composability and encapsulates concerns within self-contained components, fostering modularity and reducing architectural complexity. This naturally encourages a DRY (Don't Repeat Yourself) coding style, treating services as collections of states and operations.
 
-It's composable and seperates concerns into self contained components. This provides modularity which in turn decreases the complexity of your architecture and naturally favors a _DRY_ coding style by representing a service as collection of states and operations.
+Adhering to these principles empowers developers to swiftly prototype intricate full-stack services while upholding readability and robustness. Components, resembling self-contained microservices, encapsulate backend logic, database connections, and frontend interfaces, facilitating seamless interaction with component states.
 
-Following these principles allows you to rapidly prototype complex and sophisticated fullstack services while maintaining a readable and robust codebase.
+Representing operations on states through components provides an intuitive user interface, enhancing user experience and code comprehension. Leveraging TSX as syntactic sugar for visual representation further enhances readability and code conciseness without compromising flexibility.
 
-Components are usually small and can be seen as self contained microservices which contain the backend business logic, a database connection and a frontend component which consumes the serverside component providing a user interface to interact with the state of a component through its operations.
+With React Server, you harness the full power of JavaScript while seamlessly integrating a reactive interface into the existing React framework. Note that while React Server currently relies on React for optimal functionality, you can utilize its reactive interface independently through the GraphQL API without the need for the react-client library.
 
-It just makes sense to represent operations on states through an external user by a component.
-
-Using TSX as syntactic sugar to represent a component visually drastically improves readability and decreases file size favoring small components and easily skimmable code without sacrificing any flexibility of the host language.
-
-You can use everything JavaSciprt has to offer. React Server just provides a _reactive_ interface which seamlessly integrates with the already existing frontend framework React.
+Embrace the future of coding with React Server—a catalyst for streamlined development and unparalleled user experiences.
 
 <sub>_Note: It's currently not really usable without React unless you would want to write the client logic again. However you could always speak with the GraphQL API without the need to use the `react-client` library._</sub>
 
-## Reactive Coding
+## Asynchronous State Management
 
-React Server provides an abstraction layer for the asynchronous flow of stateful requests through a _reactive_ interface. It externalizes states into databases, enabling a **stateless** architecture which can be run on e.g. AWS Lambda.
-By utilizing a _reactive_ coding style featuring _hooks_ such as `useState` and server / client effects e.g. `useEffect` and `useClientEffect` as know from React, React Server provides a reactive interface with a linear semantic flow of code which abstracts the complex data fetching and transportation logic on the server side. It uses GraphQL's PubSub mechanism allowing you to reflect the serverside state of a component on the client in realtime, simply by consuming a _component_ on the frontend.
+_React__Server_ introduces a powerful abstraction layer for managing the asynchronous flow of stateful requests through its reactive interface. By externalizing states into databases, it facilitates a stateless architecture that can seamlessly operate on platforms like AWS Lambda.
 
-The reactive nature of _React Server_ theorethically allows you to minimize TTFB as a cached response will be fetched from the server and once the live data has been fetched from the database it publishes the data to all connected clients, making it available on the frontend as soon as it arrived from the database at the backend.
+Leveraging a reactive coding style, _React__Server_ adopts familiar hooks such as useState and introduces server/client effects like **useEffect** and **useClientEffect**, mirroring React's conventions. This reactive approach ensures a linear semantic flow of code, abstracting away complex data fetching and transportation logic on the server side. Utilizing GraphQL's **PubSub** mechanism, _React__Server_ enables real-time reflection of server-side component states on the client, effortlessly consumed through frontend components.
 
-The benefits of a reactive coding style allow for a clean representation of code flow abstracting complex data fetching and transportation logic promoting readable and maintainable code bases.
+Theoretically, React Server's reactive nature enables the minimization of Time To **First Byte** (TTFB). Cached responses are initially fetched from the server, and once live data is retrieved from the database, it is promptly published to all connected clients, making it instantly available on the frontend.
 
-## A new way to consume data.
+The advantages of adopting a reactive coding style extend beyond improved **TTFB**. They promote clean code representations, abstracting away intricate data fetching and transportation logic, ultimately fostering readable and maintainable code bases. With _React__Server_, harness the power of reactive programming to streamline state management and elevate your development experience.
 
-Just like _GraphQL_ provides a new layer of flexibility over REST by allowing you to consume safely typed shapes of data, _React Server_ provides a new layer above GraphQL which allows you to consume _components_ instead of an arbitrary shape. Which of course is way less flexible than consuming custom shapes. However in the context of component based _micro services_ where you already modularize your frontend code into reusable components you can couple these to backend component which provide full server authoritative backend buisiness logic for your frontend components. This allows you to craft highly reusabel microservices which can be hosted on any NodeJS runtime which supports _React Server_. The neat part is that communication between the server and client is seamless. You can obtain _function references_ through a single _useComponent_ call which directly calls the function defined in your serverside source code. This means no more HTTP requests or queries which fetch data or perform actions. You instead consume a component which provides the props for your frontend component. Any function reference you render on the server side will automatically be passed to the frontend as callable function which passes all arguments to the serverside function. This allows for seamless two way communication as the serverside response will be sent back to the client resolving the promise.
+## Flexibility Beyond GraphQL
 
-## Declarative and Modular
+Just as _GraphQL_ revolutionized API consumption by providing safe, typed data structures, _React__Server_ takes this innovation a step further. Instead of consuming arbitrary data shapes, _React__Server_ allows you to consume fully-fledged components, offering unparalleled flexibility in the realm of microservices.
 
-React Server has borrowed a few of the concepts from React which makes it possible to design modular backend code in a declarative fashion. Its component driven approach makes it ideal for building complex applications or microservices that work together.
+In the context of component-based microservices, where frontend code is already modularized into reusable components, _React__Server_ bridges the gap between frontend and backend by coupling frontend components with backend counterparts. These backend components encapsulate authoritative business logic, empowering you to craft highly reusable microservices deployable on any **Node.js** runtime that supports _React__Server_.
 
-You can easily nest components on the backend and mirror the component structure of the frontend.  
-**Note:** This allows you to mitigate the waterfall problem by _precomputing_ all the nested data your frontend components need and send it down to the client in one single response.
+What sets _React__Server_ apart is its seamless communication between server and client. With a single **useComponent** call, you can obtain function references directly from the backend source code. Gone are the days of tedious HTTP requests or queries for data retrieval and action execution. Instead, you consume a component that seamlessly provides props to your frontend component. Any function rendered on the server side is automatically passed to the frontend as a callable function, facilitating seamless two-way communication. Server-side responses are promptly sent back to the client, resolving promises in real-time.
 
-## Data transportation
+Experience the future of microservices with React Server—a paradigm shift that enhances flexibility, fosters seamless communication, and streamlines development like never before.
 
-When using serverside components to provide serverside state management and buisiness logic to your frontend components, you don't need to worry about transporting data at all. All that's needed is rendering the component on the _backend_ `<MyComponent key="my-key" />` and a hook on the frontend does the rest `useComponent('my-key)`.
+## Unlocking Backend Modularity
 
-## Components instead of APIs
+Drawing inspiration from React, React Server introduces a paradigm shift in backend development, allowing for modular code design in a declarative manner. Its component-driven approach is tailor-made for constructing intricate applications or microservices that seamlessly collaborate.
 
-Instead of consuming REST APIs which maps a given _path_ to a specific functionality, you can now consume **components** all data needed for a component with a single hook.
+On React Server, nesting components on the backend mirrors the frontend's component structure effortlessly. This innovative feature not only facilitates code organization but also addresses the notorious waterfall problem. By precomputing all nested data required by frontend components and sending it to the client in a single response, React Server optimizes performance and enhances user experience.
 
-### React on the backend
+<sub>_Note: This allows you to mitigate the waterfall problem by _precomputing_ all the nested data your frontend components need and send it down to the client in one single response._<sub>_
 
-Coming from React, you are used to _states_ and `props` on the frontend. Now simply extend that concept to the server side.
+## Streamlining Data Handling
 
-A component on the server side is a collection of _states_ (which store your current serverside state), _functions_ (which operate on your states), and a rendered TSX components which describes the _properties_ you expose to the public. You can render any JavaScript value as `props`. Functions get mapped to a serializable representation and passed to the frontend where they can be called with any serializable argument, directly invoking the function of your currently mounted component.
+With serverside components seamlessly managing state and business logic for your frontend counterparts, data transportation becomes a worry of the past. Simply render the component on the backend— <MyComponent key="my-key" />—and let a frontend hook take care of the rest— useComponent('my-key').
 
-By consuming a component on the frontend (or any other GraphQL client), you get access to all properties rendered by the component. The frontend automatically subscribes to any changes to the component on the serverside so it's properties are always up to date.
+## Components Over REST APIs
 
-Did we mention that a component is simply a function which returns a TSX component? It doesn't get any easier.
+Transition from traditional REST APIs, which map paths to specific functionalities, to the innovative approach of consuming components. With just a single hook, retrieve all the data required for a component, simplifying data consumption like never before.
+
+### Server-Side React Concepts
+
+If you're familiar with React, transitioning to server-side development is a breeze. Simply extend the concept of states and props to the server side.
+
+A server-side component comprises states (housing the current server-side state), functions (manipulating these states), and a TSX component describing the properties exposed to users. Any JavaScript value can be rendered as props, while functions are serialized and passed to the frontend, enabling direct invocation on the currently mounted component.
+
+Consuming a component on the frontend (or any GraphQL client) grants access to all rendered properties. The frontend automatically subscribes to server-side component changes, ensuring properties remain up to date.
+
+Did we mention that a component is merely a function returning a TSX component? It's that straightforward.
 
 ## State management
 
-Using _states_ and _effects_ on a component base makes it very easy to build large reactive backend applications. It's easy to break down buisiness logic of a large scale project into multiple components and use states to provide reactive behaviour to parts of its data.
+Leveraging states and effects at the component level simplifies the construction of expansive, reactive backend applications. Breaking down the business logic of a large-scale project into multiple components and employing states facilitates the seamless integration of reactive behavior across various data segments.

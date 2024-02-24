@@ -1,12 +1,12 @@
 # Lists
 
-Lists is meant to be an example app to showcase what you can build with [React Server](/). 
+An Exemplar Application Demonstrating the Power of React Server
 
-It's reactive, supports WebPush and serves a serverside application of modest complexity with multiple nested components. 
+Lists serves as a prime demonstration of React Server's capabilities. This application exemplifies reactivity, WebPush support, and the seamless orchestration of a moderately complex server-side architecture with multiple nested components.
 
 You can find the code of the [backend](https://github.com/C5H8NNaO4/lists-app-backend) and [frontend](https://github.com/C5H8NNaO4/lists-app-frontend) on github.
 
-It's a free and open source app. Use it if you like it, host it yourself if you want to, develope your own features or contribute to our open source repo.
+Feel free to utilize Lists—it's open-source and completely free. Host it on your own server if you prefer, customize it with your own features, or even contribute to our open-source repository. The possibilities are endless!
 
 ## Features
 

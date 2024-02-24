@@ -1,18 +1,18 @@
 # States
 
-States serve as the fundamental unit of React Server, acting as the backbone of your backend components. They enable you to build complex services with minimal code.
+States form the cornerstone of React Server, empowering your backend components with robust functionality. With states, you can effortlessly construct intricate services while keeping your codebase concise and efficient.
 
 ## States on the server
 
-States reside on the server and are created using the createState method from the Store class.
+States, residing on the server, are effortlessly created through the createState method within the Store class.
 
 ### Authentication and Authorization
 
-States, by themselves, do not handle authentication or authorization. To restrict access to a state, you must use a Component that manages who and how someone can interact with a state.
+States alone do not handle authentication or authorization. To control access to a state, you must employ a Component that governs user interaction and permissions.
 
 ### Validation
 
-States do not inherently provide validation. To validate user input or function calls, you need to utilize Components that handle these validation processes.
+States do not inherently include validation capabilities. To validate user input or function calls, Components responsible for managing such processes should be utilized.
 
 ```tsx
 const MyComponent = () => {
@@ -32,42 +32,42 @@ const MyComponent = () => {
 }
 ```
 
-This approach offers a flexible and intuitive way to impose constraints on your states.
+This method provides a flexible and intuitive means of imposing constraints on your states.
 
-On the client side, you would utilize the `useComponent` hook to obtain the server-side props and call the passed `setCount` method.
+On the client side, you can utilize the useComponent hook to access the server-side props and invoke the provided setCount method.
 
-If the input is invalid, the server-side function will throw an error, which can be handled on the client side.
+In the event of invalid input, the server-side function will throw an error, which can then be managed and handled on the client side.
 
 ### Transport
 
-In react-server v2, state transportation is managed by GraphQL / Apollo. This approach builds on a proven solution, making it easier to develop a robust framework instead of implementing a custom data transportation system.
+In React Server v2, state transportation is facilitated by GraphQL/Apollo. This strategy leverages a proven solution, simplifying the development process by avoiding the need to implement a custom data transportation system.
 
 #### Reactivity
 
-React Server employs `PubSub` to notify clients about changes to states. This allows clients to respond to state changes without having to poll the server for updates.
+React Server utilizes `PubSub` to seamlessly notify clients of state changes. This approach enables clients to respond to updates in real-time, eliminating the need for continuous polling of the server.
 
 ### States vs. Data
 
-It's important to keep in mind that use `useServerState`  is not intended to replace a database. While it may seem like a good idea to use it as such, it is not recommended. Just as you wouldn't rely on `useState` to create a database on the client side, `useServerState` should be thought of as an extension of `useState` for the server side, providing a state that exists on the server rather than the client.
+It's crucial to understand that `useServerState` is not designed to function as a replacement for a database. While it might seem tempting to utilize it in such a manner, it's not advisable. Just as you wouldn't rely on `useState` to construct a database on the client side, `useServerState` should be viewed as an extension of `useState` tailored for the server side, offering a state residing on the server rather than the client.
 
-Using a state provides you with a live, reactive property that is synchronized across all clients. However, when dealing with large amounts of form data, it's important to store that data in a database rather than a state. This is because querying such data can become challenging. Data in states are structured in a way that makes it easy to access and display in a client, but complex queries are needed for processing and analyzing the data later. Typically, data in states within a React Server application are tied to components, meaning the database structure mirrors your application's structure, simplifying data display queries but complicating data manipulation or processing queries.
+Utilizing a state provides you with a dynamic, reactive property that remains synchronized across all clients. However, when handling substantial amounts of form data, storing such data in a database is imperative. This is because navigating through such data can pose challenges. While data within states are structured for easy access and display within a client, complex queries become necessary for processing and analyzing the data at a later stage. Typically, data within states in a React Server application are linked to components, implying that the database structure reflects your application's architecture, simplifying data retrieval queries but complicating queries for data manipulation or processing.
 
-It is recommended to use a traditional database to store data that you need to access outside of your application's scope. If the data never leaves your React Server application, you can store it in a state as long as it is appropriate.
+It's recommended to employ a traditional database for storing data that requires access beyond your application's confines. If the data remains within your React Server application without being transmitted elsewhere, storing it in a state is acceptable as long as it's appropriate.
 
-You can also query data from a database on the server side and maintain a copy of the data in a state for reactivity. However, you would need to implement server-side logic to check the database for changes (e.g., using DynamoDB streams or PostgreSQL triggers). Although you can poll the database on the server and update the state with new data when it changes, there are more efficient techniques available for making your data reactive.
+Alternatively, you can retrieve data from a database on the server side and maintain a copy of the data within a state for reactivity purposes. However, you'll need to implement server-side logic to monitor the database for changes (e.g., using DynamoDB streams or PostgreSQL triggers). Although you can poll the database on the server and update the state with fresh data when alterations occur, there exist more efficient techniques for ensuring your data remains reactive.
 
 ## Stores
-States in React Server are housed in Stores, which are responsible for persisting and retrieving states. By externalizing states into a database, your backend or BFF can operate in a stateless manner, fetching the state from a database instead of relying on memory. This approach enables your entire backend to run on serverless infrastructure, as no data needs to be stored in memory and every request can be handled individually.
+In React Server, states are stored within Stores, responsible for persisting and retrieving them. By externalizing states into a database, your backend or BFF (Backend for Frontend) can operate in a stateless manner, retrieving state data from a database rather than relying on memory. This strategy enables your entire backend to function on serverless infrastructure, as no data needs to be stored in memory, and each request can be handled independently.
 
-To create a new state, you need to instantiate a Store. The Store persists and retrieves states and can transport them to various databases for persistence (e.g., Redis, PostgreSQL, DynamoDB, etc.). Utilizing a unified interface for accessing and manipulating states allows you to change the database handling states later without altering your implementation.
+To create a new state, you instantiate a Store. This Store manages the persistence and retrieval of states, capable of transporting them to various databases for persistence, such as Redis, PostgreSQL, DynamoDB, and more. Employing a unified interface for accessing and manipulating states empowers you to change the database handling states in the future without requiring modifications to your current implementation.
 
-However, this approach comes with some benefits as well as drawbacks:
+However, while this approach offers several benefits, it also presents some drawbacks:
 
-* It provides a simplified interface to a database, but it cannot replace one.
-* Crafting efficient queries to access data across components can be challenging and slow, as it may involve application code, a relational database, and custom SQL.
-* As it is essentially a key-value store, it comes with inherent limitations.
+* It provides a simplified interface to a database, but it cannot entirely replace one.
+* Crafting efficient queries to access data across components can prove challenging and slow, involving application code, a relational database, and potentially custom SQL.
+* Given its nature as a key-value store, inherent limitations are present.
 
-It's important to note that States should not be mistaken for a database and should not be treated as such. You can (and should) write custom data fetching logic whenever necessary. It's recommended to use States only when you require a reactive, stateful variable on the server that syncs with clients in real-time.
+It's important to emphasize that States should not be regarded as a replacement for a database. They are not intended to function as such. Custom data fetching logic should be implemented whenever necessary. It's advisable to utilize States only when a reactive, stateful variable on the server that synchronizes with clients in real-time is required.
 
 ```tsx
 const store = new Store();
@@ -90,11 +90,11 @@ CreateStateOptions
 
 ## States on the client
 
-States are consumed by the client using the `useServerState` hook, which takes a default value and an options object as arguments. The hook is very similar to the `useState` hook from React and only differs in the options object.
+States are accessed by the client through the useServerState hook, which accepts a default value and an options object as arguments. This hook closely resembles React's useState hook, with the only distinction being the options object.
 
 ### Optimistic Updates
 
-`setValue` calls employ optimistic updates, where the client library returns the new value before the request completes. If `setValue` is called repeatedly, ongoing requests are canceled. Once the final request succeeds, the optimistic value is replaced with the server-side value. This approach ensures a responsive user experience while maintaining data consistency.
+When setValue is invoked, optimistic updates are employed, allowing the client library to return the new value before the request completes. If setValue is called multiple times, ongoing requests are canceled. Upon the successful completion of the final request, the optimistic value is replaced with the server-side value. This approach guarantees a responsive user experience while upholding data consistency.
 
 ### useServerState
 

@@ -1,6 +1,6 @@
 ## Errors
 
-Functions in components can throw errors which get propagated back to the client.
+Errors thrown within components can propagate back to the client, providing transparency and facilitating efficient debugging processes.
 
 _backend/src/components/Examples.tsx_
 
@@ -16,8 +16,7 @@ export const HelloWorldExample1 = () => {
 };
 ```
 
-If you call the `increase` function from the client, the server throws an error which you can handle in your client.
-The error will be cleared after a successful call to a function was made.
+Calling the `increase` function from the client may result in a server error, which you can handle gracefully in your client-side code. Once a successful function call is made subsequent to the error, the error state is cleared automatically.
 
 _frontend/src/server-components/Examples.tsx_
 

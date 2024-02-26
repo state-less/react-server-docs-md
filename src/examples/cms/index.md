@@ -1,16 +1,16 @@
 ## Let's build something
 
-To give you a better idea what's possible with React Server, let's render some dynamic content by building a simple scaffold of a CMS.
+To offer you a comprehensive understanding of React Server's capabilities, let's explore rendering dynamic content by constructing a basic scaffold for a Content Management System (CMS).
 
 ### The Navigation
 
-Let's start by building a headless navigation that we can consume.
+First, let's initiate the construction of a headless navigation system, which we can readily utilize.
 
-We won't bother adding authentication at the beginning. Let's make everyone an admin for now. It will be trivial to add authentication later.
+Initially, we'll forgo the incorporation of authentication. For the time being, we'll assign admin privileges to all users. Implementing authentication can be seamlessly integrated later.
 
-We dont' need much logic to implement a serverside navigation. We basically need CRUD functionality to add, remove, edit or delete entries to the navigation.
+Establishing a server-side navigation system doesn't entail complex logic. Primarily, we require CRUD (Create, Read, Update, Delete) functionality to manage navigation entries.
 
-We'll keep things simple and basic. Let's start by writing a serverside component.
+Keeping the approach straightforward, let's commence by crafting a server-side component.
 
 _backend/src/components/Navigation_
 

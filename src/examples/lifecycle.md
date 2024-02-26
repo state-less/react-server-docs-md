@@ -1,6 +1,6 @@
 ## Lifecycle
 
-When you modify a server-side state using the setValue function, the component will automatically re-render in the context of the client. This process ensures that the component proactively notifies the subscribed client about the change, subsequently updating the component. As a result, components rendered on the frontend become reactive, eliminating the need for manual refetching or polling of the state.
+When you update a server-side state using the setValue function, the component triggers an automatic re-rendering within the client's context. This mechanism ensures that the component promptly notifies subscribed clients about the change, leading to an immediate update in the component's state. Consequently, components rendered on the frontend become reactive, eliminating the necessity for manual refetching or polling of the state.
 
 _backend/src/components/Examples.tsx_
 

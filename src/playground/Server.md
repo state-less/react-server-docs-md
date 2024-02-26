@@ -1,5 +1,5 @@
 # Server
-What you see above is a very simple server-side component. It provides information about the running server. (version, os, etc.) and should be the entrypoint of your server.   
+What you see above is a very simple server-side component. It provides information about the running server. (version, os, etc.) and should be the entrypoint of your server.
 
 */backend/src/index.tsx*
 ```tsx

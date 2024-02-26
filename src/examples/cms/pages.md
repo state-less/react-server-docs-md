@@ -1,10 +1,10 @@
 # Dynamic Pages
 
-In this backend code, the objective is to demonstrate how to create and manage dynamic content using React Server Components. By implementing a simple content management system (CMS) that allows adding, editing, and displaying pages with different paths and content, this example showcases the versatility and usefulness of React Server Components in building web applications. This approach enables developers to efficiently manage content and serve it to users, adapting to their specific needs and preferences.
+In this backend code snippet, our aim is to illustrate the creation and administration of dynamic content using React Server Components. Through the implementation of a basic content management system (CMS), featuring functionalities such as adding, editing, and displaying pages with distinct paths and content, we showcase the versatility and utility of React Server Components in web application development. This approach empowers developers to efficiently handle content and serve it to users, tailoring it to their specific requirements and preferences.
 
-A headless approach simplifies content management and delivery by decoupling the front-end presentation layer from the back-end data management, enabling seamless integration with various platforms and frameworks.
+Adopting a headless approach streamlines content management and delivery by separating the front-end presentation layer from the back-end data management. This enables seamless integration with diverse platforms and frameworks.
 
-Let's go ahead and define the serverside component.
+Now, let's proceed with defining the server-side component.
 
 _backend/src/components/Pages.tsx_
 
@@ -103,11 +103,11 @@ import { DynamicPage, Pages } from "./components/Pages";
 </Server>;
 ```
 
-In order to render a single dynamic page with a given path, such as '/test', you can create a ServerPageContainer component that takes a path prop. This component uses the useComponent hook to connect with the backend page component, passing the desired path as a prop. When the data is fetched, the component renders the ServerPage component with the received data.
+To render a single dynamic page with a specific path, such as '/test', you can employ a ServerPageContainer component that accepts a path prop. This component utilizes the useComponent hook to interface with the backend page component, transmitting the desired path as a prop. Upon data retrieval, the component proceeds to render the ServerPage component with the received data.
 
-To manage and display all available pages on the frontend, create a ServerPages component. This component also utilizes the useComponent hook to connect with the backend pages component. It provides input fields for adding new pages with their corresponding paths and content. Users can add pages, and existing pages are displayed in a list using the ServerPage component. If there are any errors, they will be displayed in an Alert component for better user feedback.
+For effective management and presentation of all available pages on the frontend, establish a ServerPages component. This component also leverages the useComponent hook to interact with the backend pages component. It furnishes input fields for the addition of new pages, alongside their respective paths and content. Users can seamlessly add pages, with existing ones showcased in a list facilitated by the ServerPage component. Any encountered errors are promptly displayed using an Alert component, enhancing user feedback.
 
-Let's create the frontend code.
+Now, let's proceed to develop the frontend code.
 
 _frontend/src/server-components/ServerPages.tsx_
 

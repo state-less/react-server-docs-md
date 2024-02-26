@@ -1,8 +1,6 @@
 # Rendering Dynamic Content
 
-The DynamicPageExample component aims to demonstrate the capabilities of rendering dynamic content based on user navigation. By using the useComponent hook, it connects to the backend navigation component and renders a list of available navigation entries. Users can click on the navigation items, which in turn sets the path and updates the displayed content. To showcase the dynamic content, the ServerPageContainer component is used, fetching and rendering the page content associated with the selected path which is passed as client-side props to the server-side component in order to fetch the appropriate content
-
-Note that we don't need any backend code in this example as we already have our navigation and the pages.
+The DynamicPageExample component illustrates the dynamic rendering of content based on user navigation. Leveraging the useComponent hook, it interfaces with the backend navigation component to display a list of available navigation entries. Users can interact by clicking on navigation items, dynamically updating the displayed content. To exhibit this functionality, the ServerPageContainer component fetches and renders the page content linked to the selected path. Notably, client-side props are passed to the server-side component to retrieve the relevant content, eliminating the need for additional backend logic.
 
 ```tsx
 import {

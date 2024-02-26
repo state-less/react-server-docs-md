@@ -1,8 +1,8 @@
 # Todo List
 
-Let's create an example Todo App, which demonstrates how to build a functional and interactive application using React Server, complete with real-time updates and seamless state management.
+Let's embark on creating a Todo App example to illustrate the power of React Server in crafting functional and interactive applications.
 
-You need to install material ui if you want to build this yourself. 
+For building this project yourself, ensure you have Material UI installed to leverage its components effectively.
 
 ```
 yarn add @mui/material @mui/icons-material
@@ -74,11 +74,13 @@ const isValidTodo = (todo): todo is TodoObject => {
 };
 ```
 
-In this example, both Todos and Todo are React Server components, which means they manage and render their state on the server-side. The Todos component is responsible for maintaining a list of Todo items, with each item having a unique ID, title, and completion status. The state of the Todos component is managed using React Server's useState with a Scopes.Client scope, ensuring that each connected client has their own separate list of todos and individual todo items' states. This allows users to interact with the app independently without affecting others' data.
+In this example, both Todos and Todo are React Server components, responsible for managing and rendering their respective states on the server-side. The Todos component maintains a list of Todo items, each comprising a unique ID, title, and completion status.
 
-The Todo component represents an individual todo item and manages its own state, such as the completion status. Similar to the Todos component, the Todo component also uses React Server's useState with Scopes.Client scope to manage its state. By using server-side state management, these components can efficiently update and synchronize their state with clients, ensuring that the UI is always up-to-date and reactive to changes. This approach simplifies state management and reduces the need for manual refetching or polling mechanisms.
+The state of the Todos component is efficiently managed using React Server's useState with a Scopes.Client scope. This ensures that each connected client possesses its own isolated list of todos and individual todo items' states. Consequently, users can interact with the app independently, without any interference with others' data.
 
-Let's head to the frontend implementation.
+On the other hand, the Todo component represents an individual todo item and autonomously manages its state, including the completion status. Similarly, it employs React Server's useState with Scopes.Client scope to handle its state. Leveraging server-side state management allows these components to seamlessly update and synchronize their states with clients. As a result, the UI remains consistently up-to-date and responsive to changes without the need for manual data fetching or polling mechanisms.
+
+Now, let's delve into the frontend implementation.
 
 *frontend/src/components/TodoApp.tsx*
 ```tsx
@@ -179,7 +181,7 @@ const TodoItem = (props) => {
   );
 };
 ```
-The TodoApp component in the frontend code utilizes React Server components to display and interact with a list of todos. It renders a form for adding new todos and a list of existing todos. The TodoItem component is responsible for rendering individual todo items, allowing users to toggle their completion status and, when in edit mode, remove the todo items from the list. Both components use the useComponent hook to access and interact with the state and functionality provided by the corresponding backend components.
+The TodoApp component in the frontend code leverages React Server components to seamlessly manage and present a list of todos. It orchestrates the rendering of a form for adding new todos alongside a display of existing todos. Within this structure, the TodoItem component assumes responsibility for rendering individual todo items. It empowers users to toggle their completion status and, when in edit mode, remove the todo items from the list. To facilitate this functionality, both components harness the useComponent hook, which grants access to and facilitates interaction with the state and features offered by the corresponding backend components.
 
-Don't be intimidated by the length of the frontend code. It's a bit verbose because we're using material ui to make it look nice.
+Although the frontend code may appear lengthy, its verbosity is primarily attributed to the integration of material ui, which enhances the visual appeal of the application. Don't let its size deter you; the comprehensive styling enriches the user experience while maintaining the simplicity and effectiveness of the application's core functionality.
 

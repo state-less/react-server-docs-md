@@ -1,7 +1,5 @@
 ## Conclusion
 
-As you can see, it's very easy and straightforward to build backend logic that validates your input, propagates errors to the client and performs basic crud operations on a serverside state.
+Discover how effortless it is to construct backend logic that validates input, efficiently communicates errors to the client, and executes basic CRUD operations on a server-side state. Witness real-time synchronization of state updates, eliminating concerns about managing the lifecycle of your server-side component.
 
-You can see that updates to the states are synchronized in realtime and you don't need to worry about the lifecycle of your serverside component.
-
-Let's head over to the next step and implement a way to add pages and display content.
+Next, let's delve into implementing a method to incorporate pages and showcase content.

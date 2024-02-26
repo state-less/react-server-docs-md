@@ -1,11 +1,11 @@
 # Comments
-Let's implement the comments example as seen on this page. It's a bit more verbose than the other examples because it can be used with and without authentication.
+Let's implement the comments example showcased on this page. This example provides a detailed illustration and can be used with or without authentication. While it's a bit more verbose compared to other examples, it offers valuable insights into implementing comment functionality.
 
 ## Backend
-Create the following new files under their respective paths and paste the contents.
+Create the following new files under their respective paths and copy-paste the contents provided below.
 
+We require a permission system to enable the deletion of comments posted by other users. To keep it simple, we'll designate administrators based on their email addresses.
 
-We need some kind of permission logic to be able to delete comments other users paste. We'll just use the email address to make people administrators.
 Be sure to replace it with your own email address.
 
 *backend/src/lib/permissions.ts*
@@ -154,9 +154,9 @@ Now you need to reference the component in your server.
 
 ## Client
 
-The client side is straightforward. We're using material ui, so make sure you have all the required packages installed, otherwise you will encounter errors.
+The client-side setup is relatively simple. We're utilizing Material UI, so ensure you have all the necessary packages installed to avoid any errors.
 
-Create a new file under the following path and paste the contents. 
+Create a new file at the specified path and copy-paste the provided contents into it.
 
 *frontend/src/server-components/Comments.tsx*
 ```tsx
@@ -272,7 +272,7 @@ const Comment = ({ comment, del, canDelete }) => {
 };
 ```
 
-Once you created the file you can render the Comments component anywhere in your app 
+After creating the file, you can seamlessly render the Comments component anywhere within your application.
 
 ```tsx
 <Comments />

@@ -1,6 +1,6 @@
 # Why?
 
-## Because it's beautiful Reactive approach 🥰
+## Because it's a beautiful reactive approach 🥰
 
 Just like React, React Server revolutionizes coding methodologies, offering a reactive approach that tackles the challenges posed by JavaScript's asynchronous and event-driven nature. Its brilliance lies in the simplicity of semantic flow within your application.
 

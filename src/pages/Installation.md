@@ -1,15 +1,29 @@
-## Installation
+# Installation
 
-### Prerequisites
+## Prerequisites
 
 Before we begin, ensure that you have the following installed on your local machine:
 
+Docker (_optional_)  
+Postgres (_optional_)  
 Node.js (**version 16** or higher)  
 npm (version 8 or higher)
 
 Note, that using node v14 or below will throw an error. This will be fixed in a future release, but for now you have to use node v16 or higher.
 
-### Get a Server running
+If you want to persist the data created by React Server, you will need a database<sup>1</sup>. If you just want to play around you don't need a database, however all states will be gone after a server restart<sup>1</sup>.
+
+<sub>1 - You can use pass a `fileName` option to `MemoryStore` to persist data between restarts.
+
+## Get PostgreSQL running
+
+_These steps are only necessary if you want to use a postgres database_
+
+```github
+https://raw.githubusercontent.com/state-less/react-server-docs-md/master/src/fragments/setup-postgres.md
+```
+
+## Get a Server running
 
 ```bash
 git clone https://github.com/state-less/clean-starter.git my-server
@@ -20,8 +34,8 @@ cp .env.template .env
 yarn start
 ```
 
-Don't forget to run `web-push generate-vapid-keys` to generate a new VAPID key for your server.	
-Update your *.env* file accordingly.
+Don't forget to run `web-push generate-vapid-keys` to generate a new VAPID key for your server.
+Update your _.env_ file accordingly.
 
 ### Get a Client running
 

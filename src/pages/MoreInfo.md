@@ -32,17 +32,17 @@ React Server is _not_ a replacement for [Next.js](/faq). You can combine it, to 
 
 ### React Server
 
-#### What is React Server?
+### Summarizing React Server?
 
+- Component driven development
+  - Modular and declarative fullstack microservices
+  - Deliver frontend _and_ backend code
+  - Consume _components_ instead of REST APIs
 - TSX on the backend
   - React's syntax
   - Declarative
   - Modular
   - Composable
-- Component driven development
-  - Modular and declarative fullstack microservices
-  - Deliver frontend _and_ backend code
-  - Consume _components_ instead of REST APIs
 - Reactive coding style
   - Synchronous _hooks_ abstract complex async / await patterns.
   - Linear semantic flow of data / states

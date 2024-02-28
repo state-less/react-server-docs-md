@@ -1,4 +1,4 @@
-## [Why React Server?](/why)
+## [More about React Server](/why)
 
 React's strength lies in its ability to create maintainable and scalable components, making it a cornerstone of large-scale projects. Its declarative nature enhances readability, while its component-driven approach naturally fosters modular architecture and facilitates decoupling. Additionally, its reactive lifecycle ensures a streamlined flow of data, fostering clean architectural designs.
 

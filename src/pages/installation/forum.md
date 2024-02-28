@@ -1,4 +1,4 @@
-# Forum
+# Setting up a Forum
 
 This is a guide on manually building a Forum with _@state-less/leap-frontend_
 

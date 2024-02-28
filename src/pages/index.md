@@ -1,5 +1,3 @@
-## Dynamic, Reactive, Full-Stack Framework
-
 A cutting-edge framework designed for crafting highly responsive full-stack services. Leveraging the renowned syntax of [React](https://react.dev/), this innovative solution seamlessly merges frontend familiarity with powerful server-side capabilities.
 
 With React Server, you can construct server-side components using JSX/TSX, blending declarative structures with a reactive lifecycle—a hallmark of the beloved React library. Harnessing TSX under the hood, you can effortlessly embrace a component-driven approach on the server side.

@@ -37,7 +37,7 @@ yarn start
 Don't forget to run `web-push generate-vapid-keys` to generate a new VAPID key for your server.
 Update your _.env_ file accordingly.
 
-### Get a Client running
+## Get a Client running
 
 Create a new vite project and choose _React_ as framework and _TypeScript_ as variant.
 
@@ -47,12 +47,14 @@ yarn create vite my-frontend
 
 Now go to the newly created folder, install the dependencies and add `@apollo/client` and `@state-less/react-client` to your project and start the server.
 
-```bash
+````bash
 cd my-frontend
+
+```bash
 yarn
-yarn add @apollo/client state-less/react-client
+yarn add @apollo/client @state-less/react-client
 yarn dev
-```
+````
 
 ![screenshot](https://raw.githubusercontent.com/state-less/react-server-docs-md/master/images/screenshot.jpg)
 
@@ -108,14 +110,14 @@ _Note: For now you need to manually create this file, but it will later be creat
 
 ### Edit `my-frontend/src/App.tsx`
 
-It's been a long way, but all that's left to do is import the `client` and `useServerState` hook and find and replace the `useState` call with a `useServerState` call.
+It's been a long way, but all that's left to do is import the `client` and `useServerState` hook and find and replace the following parts of _App.tsx_. By changing `useState` call with a `useServerState` call you create a state on the server.
 
 ```ts
 import { useServerState } from "@state-less/react-client";
 import client from "./lib/client";
+```
 
-// ...
-
+```
 const [count, setCount] = useServerState(0, {
   key: "count",
   scope: "global",
@@ -123,8 +125,19 @@ const [count, setCount] = useServerState(0, {
 });
 ```
 
+```tsx
+<button onClick={() => setCount(count + 1)}>count is {count}</button>
+```
+
+If you press the button it increases as before, but the count stays the same after a page reload. If you have a database connected to your server the count will be loaded from the database after a server restart.
+
 ### Play around
 
 That's all. Make sure the backend react server **is running** and click the button.
 
-Explore the [examples](/examples) and read the docs.
+We have a few Demo applications you take a look at to see what you can build with React Server.
+
+- [Lists](https://lists.state-less.cloud/welcome) - a minimal Todo List application.
+- [JavaScript Forum](https://javascript.forum) - a forum around JavaScript.
+
+If you already have a React Server instance running and want to host one of our open source applications, see the [state-less/leap-backend](https://github.com/state-less/leap-backend) and [state-less/leap-frontend](https://github.com/state-less/leap-frontend) repos. It just takes a few minutes to setup.

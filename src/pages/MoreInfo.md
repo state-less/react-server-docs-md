@@ -28,9 +28,18 @@ Maximize developer efficiency by accelerating the delivery of robust full-stack 
 
 ### Next.js
 
-React Server is _not_ a replacement for [Next.js](/faq). You can combine it, to have realtime server authoritative fullstack apps with [SSR](/SSR).
+React Server is not similar to Next.js. They do very different things and have a their own purpose. 
+
+Next.js is a BFF and can be used to provide [SSR](/SSR) for React apps. 
+
+React Server is a serverside Node.js framework which allows you to build 
+component based microservices. It allows you to write business logic on the 
+serverside using states, hooks and components.
+
+It's _not_ a replacement for [Next.js](/faq). You can combine it if you need [SSR](/SSR).
 
 ### React Server
+
 #### Summarizing React Server?
 
 - Component driven development

@@ -12,9 +12,8 @@ That's it, your database should be running and is ready for use.
 
 ## Init Table
 
-In order for react-server to connect to your database, you need a special table.
-
-You need to connect to the postgres instance using a docker terminal.
+In order for react-server to connect to your database, you need a states table.
+Connect to the postgres instance from a docker terminal.
 
 ```bash
 docker exec -it container_id /bin/bash
@@ -26,7 +25,7 @@ This gives you a terminal on the container which you can use to connect to postg
 psql -U postgres
 ```
 
-Copy and paste the following SQL code into the terminal and hit enter.
+Copy and paste the following SQL code into the postgres shell and hit enter.
 
 ```sql
 CREATE TABLE states
@@ -39,4 +38,4 @@ CREATE TABLE states
 );
 ```
 
-Once you created the table, your server should be able to connect to the database.
+That's all you need to do to prepare the database. Your React Server instance should now connect to the database.

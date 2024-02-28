@@ -18,7 +18,6 @@ If you want to persist the data created by React Server, you will need a databas
 ## Get PostgreSQL running
 
 _These steps are only necessary if you want to use a postgres database_
-
 ```github
 https://raw.githubusercontent.com/state-less/react-server-docs-md/master/src/fragments/setup-postgres.md
 ```

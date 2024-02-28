@@ -31,8 +31,7 @@ Maximize developer efficiency by accelerating the delivery of robust full-stack 
 React Server is _not_ a replacement for [Next.js](/faq). You can combine it, to have realtime server authoritative fullstack apps with [SSR](/SSR).
 
 ### React Server
-
-### Summarizing React Server?
+#### Summarizing React Server?
 
 - Component driven development
   - Modular and declarative fullstack microservices

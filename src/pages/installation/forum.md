@@ -10,11 +10,12 @@ In both cases you will need the backend Forum running on React Server. Follow th
 
 ## Setup
 
-[Setup a new React Server instance](/installation)
+Before you can drop the Forum component into your server you first need to
+[setup a new React Server instance](/installation). This only takes a few minutes.
 
 ## Backend
 
-Install [@state-less/leap-backend](https://npmjs.com/package/@state-less/leap-backend) in your backend.
+Once your server is running you can install the backend repo which contains the Forum [@state-less/leap-backend](https://npmjs.com/package/@state-less/leap-backend).
 
 ```bash
 cd my-server
@@ -37,7 +38,7 @@ export const reactServer = (
 Import the Forum and place it inside the `Server` component.
 
 ```tsx
-import { Forum } from "@state-less/leap-backend";
+import { Forum, ForumPolicies } from "@state-less/leap-backend";
 ```
 
 ```tsx
@@ -50,14 +51,16 @@ export const reactServer = (
       policies={[ForumPolicies.PostsNeedApproval]}
       users={["moritz.roessler@gmail.com"]} //Use your gmail adress
     />
-    <HelloWorldExample2 key="button" />
   </Server>
 );
 ```
 
+That's all it needs to provide the Forum services on the backend.
+You can start your server with `yarn start`.
+
 ## Frontend
 
-You have two options. Connect the boilerplate repo to your backend or create your own frontend from scratch with Leap's components.
+You have two options of connecting a frontend to the backend. 1. Use the boilerplate repo to connect your backend. 2. Create your own frontend from scratch with [Leap](https://npmjs.com/package/@state-less/leap-backend)'s frontend components.
 
 ### Boilerplate
 

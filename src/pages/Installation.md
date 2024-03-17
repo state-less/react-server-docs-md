@@ -28,14 +28,12 @@ _These steps are only necessary if you want to use a postgres database_
 https://raw.githubusercontent.com/state-less/react-server-docs-md/master/src/fragments/setup-postgres.md
 ```
 
-![Docker screenshot](https://raw.githubusercontent.com/state-less/react-server-docs-md/master/images/docker.png)
-
 ## Get a Server running
 
 **Important:** Make sure Postgres is running on port **5433**
 
 ```bash
-npx degit https://github.com/state-less/clean-starter my-server
+npx degit state-less/clean-starter my-server
 cd my-server
 yarn
 cp .env.template .env

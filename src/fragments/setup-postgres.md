@@ -10,6 +10,8 @@ docker run --name react-server -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES
 
 That's it, your database should be running and is ready for use.
 
+![Docker screenshot](https://raw.githubusercontent.com/state-less/react-server-docs-md/master/images/docker.png)
+
 ## Init Table
 
 In order for react-server to connect to your database, you need a states table.

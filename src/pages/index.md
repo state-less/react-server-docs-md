@@ -10,4 +10,4 @@ Key Features:
 
 Experience the future of full-stack development with React Server—where innovation meets efficiency, and frontend prowess extends seamlessly to the server side.
 
-**Effortlessly Prototype Advanced Full-Stack Services with Minimal Complexity. Get Started Today!**
+**Effortlessly Prototype Advanced Full-Stack Services with Minimal Complexity. Get Started with `<Components />` Today!**

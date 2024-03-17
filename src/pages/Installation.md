@@ -72,7 +72,7 @@ yarn create vite my-frontend
 
 Now go to the newly created folder, install the dependencies and add `@apollo/client` and `@state-less/react-client` to your project and start the server.
 
-````bash
+```bash
 cd my-frontend
 ```
 
@@ -80,7 +80,7 @@ cd my-frontend
 yarn
 yarn add @apollo/client @state-less/react-client
 yarn dev
-````
+```
 
 ![screenshot](https://raw.githubusercontent.com/state-less/react-server-docs-md/master/images/screenshot.jpg)
 

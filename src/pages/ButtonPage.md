@@ -1,3 +1,4 @@
+# Code
 You probably wonder how components on the server side look like. That's easy: Just as they do on the Frontend. If you're familiar with _React_ you should immediately notice the similarities.
 
 ```tsx

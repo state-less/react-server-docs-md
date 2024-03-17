@@ -14,8 +14,8 @@ You can write your whole backend business logic using components, states, hooks 
 
 > How does it compare to Next.js?
 
-Next.js is essentially a [BFF](/SSR#bff-vs-backend) which allows you to do Server Side Rendering. React Server on the other hand allows you to build a **backend** using components that have their own lifecycle on the server side.  
-React Server allows you to use familiar paradigms and a reactive pattern known from the frontend. React Server can - but not neccessarily has to - be used as BFF in order to facilitate [SSR](/SSR).
+Next.js is essentially a [BFF](https://reactserver.dev/SSR#bff-vs-backend) which allows you to do Server Side Rendering. React Server on the other hand allows you to build a **backend** using components that have their own lifecycle on the server side.  
+React Server allows you to use familiar paradigms and a reactive pattern known from the frontend. React Server can - but not neccessarily has to - be used as BFF in order to facilitate [SSR](https://reactserver.dev/SSR).
 
 > Is there a recommended way to handle authentication and authorization in React Server?
 

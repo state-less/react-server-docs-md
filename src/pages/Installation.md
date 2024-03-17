@@ -14,9 +14,9 @@ Before we begin, ensure that you have the following installed on your local mach
 
 Note, that using node v14 or below will throw an error. This will be fixed in a future release, but for now you have to use node v16 or higher.
 
-If you want to persist the data created by React Server, you will need a database<sup>1</sup>. If you just want to play around you don't need a database, however all states will be gone after a server restart<sup>1</sup>.
+If you want to persist the data created by React Server, you will need a database<sup>1</sup>. If you just want to play around, you don't need a database. However, all states will be gone after a server restart<sup>1</sup>.
 
-<sub>1 - You can use pass a `fileName` option to `MemoryStore` to persist data between restarts.
+<sub>1 - You can pass a `fileName` option to `MemoryStore` to persist data between restarts.
 
 ## Get PostgreSQL running
 
@@ -44,7 +44,7 @@ Update your _.env_ file accordingly.
 
 ### Quickstart
 
-You can use our template to quickly setup a new Frontend:
+You can use our template to quickly setup a new frontend:
 
 ```bash
 npx degit state-less/template-vite-react-server my-frontend
@@ -53,7 +53,7 @@ yarn
 yarn dev --mode=production
 ```
 
-This will clone our template with all the neccessary setup to connect to a React Server instance.
+This will clone our template with all the neccessary code to connect to a React Server instance.
 
 _Note:_ Starting the server in production mode connects to our live server, so you can take a look at the frontend without starting a server yourself.
 
@@ -69,6 +69,7 @@ Now go to the newly created folder, install the dependencies and add `@apollo/cl
 
 ````bash
 cd my-frontend
+```
 
 ```bash
 yarn
@@ -155,7 +156,9 @@ If you press the button it increases as before, but the count stays the same aft
 
 That's all. Make sure the backend react server **is running** and click the button.
 
-We have a few Demo applications you take a look at to see what you can build with React Server.
+For a quick peek at how code written with React Server looks like, visit this [page](/code)
+
+We also have a few demo applications. Feel free to take a look at them, to see what you can build with React Server.
 
 - [Lists](https://lists.state-less.cloud/welcome) - a minimal Todo List application.
 - [JavaScript Forum](https://javascript.forum) - a forum around JavaScript.

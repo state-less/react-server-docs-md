@@ -28,7 +28,7 @@ _These steps are only necessary if you want to use a postgres database_
 https://raw.githubusercontent.com/state-less/react-server-docs-md/master/src/fragments/setup-postgres.md
 ```
 
-![Docker screenshot](../../images/docker.png)
+![Docker screenshot](https://raw.githubusercontent.com/state-less/react-server-docs-md/master/images/docker.png)
 
 ## Get a Server running
 
@@ -42,8 +42,7 @@ cp .env.template .env
 yarn start
 ```
 
-![Docker screenshot](../../images/react-server.png)
-
+![Docker screenshot](https://raw.githubusercontent.com/state-less/react-server-docs-md/master/images/react-server.png)
 
 Don't forget to run `web-push generate-vapid-keys` to generate a new VAPID key for your server.
 Update your _.env_ file accordingly.

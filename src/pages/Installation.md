@@ -1,13 +1,16 @@
 # Installation
 
+- [Backend](#get-a-server-running)
+- [Frontend](#get-a-client-running)
+
 ## Prerequisites
 
 Before we begin, ensure that you have the following installed on your local machine:
 
-* Docker (_optional_)  
-* Postgres (_optional_)  
-* Node.js (**version 16** or higher)  
-* npm (version 8 or higher)
+- Docker (_optional_)
+- Postgres (_optional_)
+- Node.js (**version 16** or higher)
+- npm (version 8 or higher)
 
 Note, that using node v14 or below will throw an error. This will be fixed in a future release, but for now you have to use node v16 or higher.
 
@@ -18,6 +21,7 @@ If you want to persist the data created by React Server, you will need a databas
 ## Get PostgreSQL running
 
 _These steps are only necessary if you want to use a postgres database_
+
 ```github
 https://raw.githubusercontent.com/state-less/react-server-docs-md/master/src/fragments/setup-postgres.md
 ```
@@ -37,6 +41,23 @@ Don't forget to run `web-push generate-vapid-keys` to generate a new VAPID key f
 Update your _.env_ file accordingly.
 
 ## Get a Client running
+
+### Quickstart
+
+You can use our template to quickly setup a new Frontend:
+
+```bash
+npx degit state-less/template-vite-react-server my-frontend
+cd my-frontend
+yarn
+yarn dev --mode=production
+```
+
+This will clone our template with all the neccessary setup to connect to a React Server instance.
+
+_Note:_ Starting the server in production mode connects to our live server, so you can take a look at the frontend without starting a server yourself.
+
+### Manual Setup with Vite
 
 Create a new vite project and choose _React_ as framework and _TypeScript_ as variant.
 

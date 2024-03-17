@@ -1,5 +1,7 @@
 # Installation
 
+_Hint:_ In case you just want to take a quick peek at how the frontend works, you can skip ahead and setup a database and server later. Just head over to the [frontend](#get-a-client-running) section and start Vite in production mode.
+
 - [Backend](#get-a-server-running)
 - [Frontend](#get-a-client-running)
 

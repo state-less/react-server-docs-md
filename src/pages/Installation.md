@@ -74,7 +74,7 @@ Now go to the newly created folder, install the dependencies and add `@apollo/cl
 
 ```bash
 cd my-frontend
-```
+```  
 
 ```bash
 yarn
